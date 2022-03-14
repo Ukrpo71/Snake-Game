@@ -11,21 +11,33 @@ public class Jumper : MonoBehaviour
     [SerializeField]
     private float _jumpForce = 5;
 
+    [SerializeField]
+    private float _jumpingTime;
+    private float _timer;
+
 
     void Start()
     {
         _rb = GetComponent<Rigidbody>();
         _jumpForce = 3;
+
+
+        _timer = 0;
     }
 
     void Update()
     {
-        if (_isJumping && _isInTheAir && transform.position.y > 2f)
+        if (_isJumping && _isInTheAir)
         {
-            Debug.Log(gameObject.name + " is in the air");
-            _rb.velocity = new Vector3(0, 0, 0);
-            _rb.AddForce(Vector3.down * _jumpForce, ForceMode.Impulse);
-            _isInTheAir = false;
+            _timer += Time.deltaTime;
+            if (_timer >= _jumpingTime || transform.position.y > 2f)
+            {
+                Debug.Log(gameObject.name + " is in the air");
+                _rb.velocity = new Vector3(0, 0, 0);
+                _rb.AddForce(Vector3.down * _jumpForce, ForceMode.Impulse);
+                _isInTheAir = false;
+                _timer = 0;
+            }
         }
     }
 
@@ -44,6 +56,7 @@ public class Jumper : MonoBehaviour
         if (_isJumping && collision.gameObject.name == "Floor")
         {
             _isJumping = false;
+            _rb.velocity = Vector3.zero;
         }
     }
 

@@ -25,7 +25,7 @@ public class SnakeBody : MonoBehaviour
 
         if (transform.position.y > 0.5)
         {
-            transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
+            //transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
             
         }
     }
@@ -58,7 +58,7 @@ public class SnakeBody : MonoBehaviour
         {
             var body = _bodyParts[0];
             Vector3 point = _positionHistory[Mathf.Min(_gap, _positionHistory.Count - 1)];
-            point.y = 0.5f;
+            //point.y = 0.5f;
             Vector3 moveDirection = point - body.transform.position;
             moveDirection.y = 0;
             body.transform.position += moveDirection * (_speed) * Time.deltaTime;

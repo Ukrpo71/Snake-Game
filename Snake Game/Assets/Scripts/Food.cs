@@ -16,7 +16,7 @@ public class Food : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.transform.parent.TryGetComponent(out PlayerController player))
+        if (other.gameObject.TryGetComponent(out PlayerController player))
         {
             player.Grow();
             Destroy(gameObject);

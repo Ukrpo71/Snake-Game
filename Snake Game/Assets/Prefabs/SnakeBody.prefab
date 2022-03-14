@@ -198,6 +198,7 @@ GameObject:
   - component: {fileID: 884059217092387000}
   - component: {fileID: 1964273968752405983}
   - component: {fileID: 6858046417117640067}
+  - component: {fileID: 7155200776946593877}
   m_Layer: 7
   m_Name: SnakeBody
   m_TagString: Body
@@ -254,7 +255,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!114 &4656847986533880849
 MonoBehaviour:
@@ -296,7 +297,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c522313443b18764daf3282850cccfc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _jumpForce: 5
+  _jumpForce: 3
+  _jumpingTime: 0.5
 --- !u!114 &6858046417117640067
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -311,6 +313,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _jumpHeight: 5
   _speedOfJump: 1
+--- !u!65 &7155200776946593877
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1490865226720623046}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.33, y: 1, z: 0.33}
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!1 &1490889510468706548
 GameObject:
   m_ObjectHideFlags: 0
@@ -800,8 +815,8 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1491214795727417392}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
+  m_IsTrigger: 0
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 0.02577868, y: 0.02576055, z: 0.11024487}
   m_Center: {x: -0.001068172, y: 0.001309216, z: 0.054536965}

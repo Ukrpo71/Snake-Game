@@ -4,20 +4,20 @@ using UnityEngine;
 
 public class JumpTrigger : MonoBehaviour
 {
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        
-    }
 
     private void OnTriggerEnter(Collider other)
     {
+        //Destroy jumpTrigger when the player jumped and there is no body
+        if (!other.CompareTag("Floor") && !other.CompareTag("Body"))
+            if (other.gameObject.TryGetComponent(out PlayerController player))
+            {
+                if (player._bodyParts.Count == 0)
+                    Destroy(gameObject);
+            }
+
         //Destroy jumpTrigger when the last body part jumped
-        if (other.gameObject.transform.parent.TryGetComponent(out SnakeBody body))
+        //if (other.gameObject.transform.parent != null && other.gameObject.TryGetComponent(out SnakeBody body))
+        if (other.gameObject.TryGetComponent(out SnakeBody body))
         {
             Debug.Log(body._bodyParts.Count);
 
@@ -25,12 +25,6 @@ public class JumpTrigger : MonoBehaviour
                 Destroy(gameObject);
         }
 
-        //Destroy jumpTrigger when the player jumped and there is no body
-        if (!other.CompareTag("Floor") && !other.CompareTag("Body"))
-            if (other.gameObject.transform.parent.TryGetComponent(out PlayerController player))
-            {
-                if (player._bodyParts.Count == 0)
-                    Destroy(gameObject);
-            }
+        
     }
 }

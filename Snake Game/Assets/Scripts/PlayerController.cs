@@ -33,6 +33,8 @@ public class PlayerController : MonoBehaviour
     private Rigidbody _rb;
 
 
+    public Vector3 velocityForTesting;
+
     void Start()
     {
         _spawner = FindObjectOfType<Spawner>();
@@ -61,7 +63,14 @@ public class PlayerController : MonoBehaviour
 
     void Move()
     {
+        var dir = transform.position + transform.forward * _speed * 10 * Time.deltaTime;
+        Debug.DrawRay(transform.position, dir - transform.position, Color.yellow);
         transform.position += transform.forward * _speed * Time.deltaTime;
+
+        velocityForTesting = _rb.velocity;
+
+        Debug.Log(velocityForTesting);
+
         // Удаление ненужных позиций
         if (_positionHistory.Count > (_bodyParts.Count + 1) * _gap)
             _positionHistory.RemoveAt(_positionHistory.Count - 1);
@@ -87,7 +96,7 @@ public class PlayerController : MonoBehaviour
         {
             var body = _bodyParts[0];
             Vector3 point = _positionHistory[Mathf.Min(_gap, _positionHistory.Count - 1)];
-            point.y = 0.5f;
+            //point.y = 0.5f;
             Vector3 moveDirection = point - body.transform.position;
             moveDirection.y = 0;
             body.transform.position += moveDirection * (_speed) * Time.deltaTime;
@@ -121,18 +130,27 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter(Collider other)
+    /*private void OnTriggerEnter(Collider other)
     {
-        if (other.transform.parent.CompareTag("Body"))
+        if (other.transform.parent != null && other.transform.parent.CompareTag("Body"))
         {
             Debug.Log("Game Over!");
             _speed = 0;
         }
-    }
+    }*/
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Floor") || collision.gameObject.CompareTag("Wall"))
+        if (collision.collider.gameObject.CompareTag("Wall"))
+        {
+            Debug.Log("Game Over!");
+            _speed = 0;
+        }
+
+        Debug.Log(collision.gameObject.name);
+
+        //if (collision.collider.transform.parent != null && collision.collider.transform.parent.CompareTag("Body"))
+        if (collision.gameObject.CompareTag("Body"))
         {
             Debug.Log("Game Over!");
             _speed = 0;

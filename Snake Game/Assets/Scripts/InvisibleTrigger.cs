@@ -10,7 +10,7 @@ public class InvisibleTrigger : MonoBehaviour
     private float _timer = 0;
     void Start()
     {
-        transform.GetComponentInChildren<BoxCollider>().isTrigger = false;
+        transform.GetComponentInChildren<BoxCollider>().isTrigger = true;
     }
 
     void Update()
@@ -19,7 +19,7 @@ public class InvisibleTrigger : MonoBehaviour
 
         if (_timer > _invisibleTimer)
         {
-            transform.GetComponentInChildren<BoxCollider>().isTrigger = true;
+            transform.GetComponentInChildren<BoxCollider>().isTrigger = false;
             Destroy(this);
         }
 
