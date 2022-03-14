@@ -20,6 +20,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private int _gap = 3;
 
+    [SerializeField]
+    private GameManager _gameManager;
+
     private Vector3 _input;
 
     public List<GameObject> _bodyParts = new List<GameObject>();
@@ -109,7 +112,8 @@ public class PlayerController : MonoBehaviour
 
     public void Grow()
     {
-        _spawner.Spawn();
+        _gameManager.DecreaseNumberOfFood();
+
         var body = Instantiate(_bodyPrefab);
         body.transform.position = _positionHistory[_positionHistory.Count - 1];
 
@@ -117,8 +121,6 @@ public class PlayerController : MonoBehaviour
             _bodyParts[_bodyParts.Count - 1].GetComponent<SnakeBody>().AddBody(body);
         
         _bodyParts.Add(body);
-
-
 
     }
 

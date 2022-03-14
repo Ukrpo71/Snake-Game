@@ -10,9 +10,21 @@ public class Spawner : MonoBehaviour
     [SerializeField]
     private GameObject _floor;
 
-    public void Spawn()
+    public void Spawn(int amount)
     {
-        Instantiate(_spawnPrefab, GenerateRandomSpawnPosition(), Quaternion.identity);
+        for (int i = 0; i < amount; i++)
+        {
+            Instantiate(_spawnPrefab, GenerateRandomSpawnPosition(), Quaternion.identity);
+        }
+        
+    }
+
+    public void SpawnAwayFrom(int amount, Vector3 awayFrom)
+    {
+        for (int i = 0; i < amount; i++)
+        {
+            Instantiate(_spawnPrefab, GenerateRandomSpawnPositionAwayFrom(awayFrom), Quaternion.identity);
+        }
     }
 
     private Vector3 GenerateRandomSpawnPosition()
@@ -26,4 +38,13 @@ public class Spawner : MonoBehaviour
         return randomPosition;
 
     }
+
+    private Vector3 GenerateRandomSpawnPositionAwayFrom(Vector3 awayFrom)
+    {
+        var point = Random.insideUnitCircle.normalized * Random.Range(3, 9);
+        point.y = 0.5f;
+        return point;
+    }
+
+    
 }
