@@ -123,19 +123,19 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.gameObject.name);
         if (other.transform.parent.CompareTag("Body"))
         {
             Debug.Log("Game Over!");
+            _speed = 0;
         }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log(collision.gameObject.name);
-        if (collision.gameObject.CompareTag("Wall"))
+        if (collision.gameObject.CompareTag("Floor") || collision.gameObject.CompareTag("Wall"))
         {
             Debug.Log("Game Over!");
+            _speed = 0;
         }
     }
 

@@ -12,6 +12,7 @@ public class Spawner : MonoBehaviour
 
     public void Spawn(int amount)
     {
+        Debug.Log("Spawn");
         for (int i = 0; i < amount; i++)
         {
             Instantiate(_spawnPrefab, GenerateRandomSpawnPosition(), Quaternion.identity);
@@ -21,6 +22,7 @@ public class Spawner : MonoBehaviour
 
     public void SpawnAwayFrom(int amount, Vector3 awayFrom)
     {
+        Debug.Log("Spawn Away");
         for (int i = 0; i < amount; i++)
         {
             Instantiate(_spawnPrefab, GenerateRandomSpawnPositionAwayFrom(awayFrom), Quaternion.identity);
@@ -41,7 +43,7 @@ public class Spawner : MonoBehaviour
 
     private Vector3 GenerateRandomSpawnPositionAwayFrom(Vector3 awayFrom)
     {
-        var point = Random.insideUnitCircle.normalized * Random.Range(3, 9);
+        var point = Random.insideUnitSphere.normalized * Random.Range(3, 9);
         point.y = 0.5f;
         return point;
     }

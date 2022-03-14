@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
 
     private void Init()
     {
-        var amountToSpawn = Random.Range(0, _maxAmountOfFood);
+        var amountToSpawn = Random.Range(_minTreshold, _maxAmountOfFood);
         _spawner.SpawnAwayFrom(amountToSpawn, new Vector3(0,0,0));
         _numberOfFoodOnTheField = amountToSpawn;
 
@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
 
     private void ReInit()
     {
-        var amountToSpawn = Random.Range(1, _maxAmountOfFood - _numberOfFoodOnTheField);
+        var amountToSpawn = Random.Range(_minTreshold, _maxAmountOfFood - _numberOfFoodOnTheField);
         _spawner.Spawn(amountToSpawn);
         _numberOfFoodOnTheField += amountToSpawn;
 
