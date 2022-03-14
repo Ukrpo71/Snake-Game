@@ -16,7 +16,7 @@ public class SnakeBody : MonoBehaviour
 
     void Start()
     {
-        _gap = 10;
+        _gap = 3;
     }
 
     void Update()

@@ -44,9 +44,6 @@ public class PlayerController : MonoBehaviour
         GatherInput();
         Look();
         Move();
-
-
-
     }
 
     void GatherInput()
@@ -106,7 +103,7 @@ public class PlayerController : MonoBehaviour
             var relative = (transform.position + _input.ToIso()) - transform.position;
             var rotation = Quaternion.LookRotation(relative, Vector3.up);
 
-            transform.rotation = Quaternion.RotateTowards(transform.rotation,rotation, _turnSpeed * Time.deltaTime);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, _turnSpeed * Time.deltaTime);
         }
     }
 
@@ -119,17 +116,26 @@ public class PlayerController : MonoBehaviour
 
         if (_bodyParts.Count > 0)
             _bodyParts[_bodyParts.Count - 1].GetComponent<SnakeBody>().AddBody(body);
-        
+
         _bodyParts.Add(body);
 
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Food"))
+        Debug.Log(other.gameObject.name);
+        if (other.transform.parent.CompareTag("Body"))
         {
-            if (other.gameObject.transform.parent.gameObject.TryGetComponent(out SnakeBody body))
-                Debug.Log("Game Over!");
+            Debug.Log("Game Over!");
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log(collision.gameObject.name);
+        if (collision.gameObject.CompareTag("Wall"))
+        {
+            Debug.Log("Game Over!");
         }
     }
 

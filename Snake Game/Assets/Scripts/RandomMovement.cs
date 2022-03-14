@@ -36,29 +36,18 @@ public class RandomMovement : MonoBehaviour
 
         var movementDirection = randomVector - transform.position;
 
-        Debug.Log("randomVector: " + randomVector);
-        Debug.Log("transform:position: " + transform.position);
-        Debug.Log("movementDirection: " + movementDirection);
-
-        Debug.DrawRay(transform.position, movementDirection, Color.yellow);
-
-
         if (Physics.Raycast(transform.position, movementDirection, out RaycastHit hitInfo, _range))
         {
             if (hitInfo.collider.CompareTag("Wall"))
             {
-                Debug.Log("Can't move here");
                 return FindNextTarget();
             }
             else
             {
-                Debug.Log("Can Move Here");
                 return randomVector;
             }
 
         }
-
-        Debug.Log("Can Move Here");
         return randomVector;
     }
 }
