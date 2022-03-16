@@ -16,7 +16,7 @@ public class SnakeBody : MonoBehaviour
 
     void Start()
     {
-        _gap = 3;
+        _gap = 20;
     }
 
     void Update()
@@ -61,9 +61,10 @@ public class SnakeBody : MonoBehaviour
             //point.y = 0.5f;
             Vector3 moveDirection = point - body.transform.position;
             moveDirection.y = 0;
-            body.transform.position += moveDirection * (_speed) * Time.deltaTime;
-            //body.transform.position = point;
+            //body.transform.position += moveDirection * (_speed) * Time.deltaTime;
             body.transform.LookAt(point);
+            body.transform.position = point;
+
         }
 
     }

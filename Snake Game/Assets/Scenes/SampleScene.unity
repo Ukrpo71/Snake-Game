@@ -751,7 +751,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.685894, y: 0.083137274, z: -10.840002}
+  m_LocalPosition: {x: -0.685894, y: -0.0917995, z: -10.739002}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 865743686}
@@ -1238,7 +1238,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1647260633}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.685894, y: 0.083137274, z: -10.840002}
+  m_LocalPosition: {x: -0.685894, y: -0.0917995, z: -10.739002}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1120111695}
@@ -1612,6 +1612,7 @@ MonoBehaviour:
   _gameManager: {fileID: 0}
   _bodyParts: []
   _positionHistory: []
+  _timeToTurn: 0
 --- !u!1001 &1491975003351388254
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1633,7 +1634,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1487402316274804784, guid: 8c544ada2406f7f4f836e80f441173d8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.492
+      value: 0.29
       objectReference: {fileID: 0}
     - target: {fileID: 1487402316274804784, guid: 8c544ada2406f7f4f836e80f441173d8, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1676,12 +1677,28 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1491975002794199066, guid: 8c544ada2406f7f4f836e80f441173d8, type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1491975002794199066, guid: 8c544ada2406f7f4f836e80f441173d8, type: 3}
       propertyPath: m_CollisionDetection
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1491975002794199071, guid: 8c544ada2406f7f4f836e80f441173d8, type: 3}
       propertyPath: _gap
-      value: 3
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1491975002794199071, guid: 8c544ada2406f7f4f836e80f441173d8, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1491975002794199071, guid: 8c544ada2406f7f4f836e80f441173d8, type: 3}
+      propertyPath: _bodyPrefab
+      value: 
+      objectReference: {fileID: 1490865226720623046, guid: a7e1f195ca1c13340a0cd0f7d1441b50, type: 3}
+    - target: {fileID: 1491975002794199071, guid: 8c544ada2406f7f4f836e80f441173d8, type: 3}
+      propertyPath: _timeToTurn
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 1491975002794199071, guid: 8c544ada2406f7f4f836e80f441173d8, type: 3}
       propertyPath: _gameManager

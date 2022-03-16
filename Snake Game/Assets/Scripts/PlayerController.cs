@@ -33,7 +33,10 @@ public class PlayerController : MonoBehaviour
     private Rigidbody _rb;
 
 
-    public Vector3 velocityForTesting;
+    private bool _isRotating;
+    private float _timer;
+    [SerializeField]
+    private float _timeToTurn;
 
     void Start()
     {
@@ -63,56 +66,83 @@ public class PlayerController : MonoBehaviour
 
     void Move()
     {
-        var dir = transform.position + transform.forward * _speed * 10 * Time.deltaTime;
-        Debug.DrawRay(transform.position, dir - transform.position, Color.yellow);
+        //var dir = transform.position + transform.forward * _speed * 10 * Time.deltaTime;
+        //Debug.DrawRay(transform.position, dir - transform.position, Color.yellow);
+        
         transform.position += transform.forward * _speed * Time.deltaTime;
 
-        velocityForTesting = _rb.velocity;
+        //velocityForTesting = _rb.velocity;
 
-        Debug.Log(velocityForTesting);
+        //Debug.Log(velocityForTesting);
 
         // ”даление ненужных позиций
-        if (_positionHistory.Count > (_bodyParts.Count + 1) * _gap)
-            _positionHistory.RemoveAt(_positionHistory.Count - 1);
+        //if (_positionHistory.Count > (_bodyParts.Count + 1) * _gap)
+        //    _positionHistory.RemoveAt(_positionHistory.Count - 1);
 
         //—охранение позиции змейки
         _positionHistory.Insert(0, transform.position);
 
 
 
-        //int index = 1;
-        /*foreach (var body in _bodyParts)
+        
+        int index = 1;
+        foreach (var body in _bodyParts)
         {
             Vector3 point = _positionHistory[Mathf.Min(index * _gap, _positionHistory.Count - 1)];
+            point.y = 0.25f;
             Vector3 moveDirection = point - body.transform.position;
-            body.transform.position += moveDirection * (_speed - 1) * Time.deltaTime;
-            //body.transform.position = point;
+            //body.transform.position += moveDirection * _speed * Time.deltaTime;
             body.transform.LookAt(point);
+            body.transform.position = point;
             index++;
         }
-        */
+        
 
-        if (_bodyParts.Count > 0)
+        /*if (_bodyParts.Count > 0)
         {
             var body = _bodyParts[0];
             Vector3 point = _positionHistory[Mathf.Min(_gap, _positionHistory.Count - 1)];
             //point.y = 0.5f;
             Vector3 moveDirection = point - body.transform.position;
             moveDirection.y = 0;
-            body.transform.position += moveDirection * (_speed) * Time.deltaTime;
-            //body.transform.position = point;
+            //body.transform.position += moveDirection * (_speed) * Time.deltaTime;
             body.transform.LookAt(point);
-        }
+            body.transform.position = point;
+            
+        }*/
     }
 
     void Look()
     {
         if (_input != Vector3.zero)
         {
-            var relative = (transform.position + _input.ToIso()) - transform.position;
-            var rotation = Quaternion.LookRotation(relative, Vector3.up);
+            // _isRotating ограничивает поворот на 45 градусов раз в промежуток времени _timeToTurn
+            if (_isRotating == false)
+            {
 
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, _turnSpeed * Time.deltaTime);
+                // "ѕоворачиваем" переменную _input на 45 градусов, чтобы изометрическое движение было интуиивно
+                // пон€тно. Ќажима€ на "верх" игрок движетс€ "вверх".
+                var matrix = Matrix4x4.Rotate(Quaternion.Euler(0, 45, 0));
+                var skewedInput = matrix.MultiplyPoint3x4(_input);
+
+                // ѕововрачиваем игрока в сторону, которую мы указали
+                var relative = (transform.position + skewedInput) - transform.position;
+                Quaternion rotation = Quaternion.LookRotation(relative, Vector3.up);
+
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, 45);
+
+                _isRotating = true;
+            }
+            else
+            {
+                _timer += Time.deltaTime;
+
+                if (_timer > _timeToTurn)
+                {
+                    _timer = 0;
+                    _isRotating = false;
+                }
+            }
         }
     }
 
@@ -123,8 +153,8 @@ public class PlayerController : MonoBehaviour
         var body = Instantiate(_bodyPrefab);
         body.transform.position = _positionHistory[_positionHistory.Count - 1];
 
-        if (_bodyParts.Count > 0)
-            _bodyParts[_bodyParts.Count - 1].GetComponent<SnakeBody>().AddBody(body);
+        //if (_bodyParts.Count > 0)
+        //    _bodyParts[_bodyParts.Count - 1].GetComponent<SnakeBody>().AddBody(body);
 
         _bodyParts.Add(body);
 
