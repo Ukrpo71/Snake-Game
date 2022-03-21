@@ -89,7 +89,7 @@ public class PlayerController : MonoBehaviour
         foreach (var body in _bodyParts)
         {
             Vector3 point = _positionHistory[Mathf.Min(index * _gap, _positionHistory.Count - 1)];
-            point.y = 0.25f;
+            point.y = body.transform.position.y;
             Vector3 moveDirection = point - body.transform.position;
             //body.transform.position += moveDirection * _speed * Time.deltaTime;
             body.transform.LookAt(point);
