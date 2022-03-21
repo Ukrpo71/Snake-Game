@@ -33,7 +33,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _timeToTurn;
 
     private bool _isRunning;
-    private bool _gameOver;
 
     void Start()
     {
@@ -46,11 +45,27 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         CheckBounds();
-        if (_gameOver == false)
+        if (_gameManager.GameOver == false)
         {
             GatherInput();
             Look();
             Move();
+        }
+        else
+        {
+            RotateAround();
+        }
+    }
+
+    private void RotateAround()
+    {
+        transform.Rotate(new Vector3(0, 5, 0));
+        if (_bodyParts.Count > 0)
+        {
+            foreach (var body in _bodyParts)
+            {
+                body.transform.Rotate(new Vector3(0, 5, 0));
+            }
         }
     }
 
@@ -61,9 +76,9 @@ public class PlayerController : MonoBehaviour
         if (_input == Vector3.zero)
             _input = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
 
-        if (_isRunning && _gameOver == false)
+        if (_isRunning && _gameManager.GameOver == false)
             _moveSpeed = _runSpeed;
-        else if (_isRunning == false && _gameOver == false)
+        else if (_isRunning == false && _gameManager.GameOver == false)
             _moveSpeed = _walkSpeed;
             
     }
@@ -75,17 +90,20 @@ public class PlayerController : MonoBehaviour
 
     public void ToggleWalk() => _isRunning = !_isRunning;
 
+    public void StopAllMovement()
+    {
+        GetComponent<Rigidbody>().velocity = Vector3.zero;
+        GetComponent<Rigidbody>().isKinematic = true;
+        foreach (var body in _bodyParts)
+        {
+            body.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            body.GetComponent<Rigidbody>().isKinematic = true;
+        }
+    }
 
     void Move()
     {
-        //var dir = transform.position + transform.forward * _speed * 10 * Time.deltaTime;
-        //Debug.DrawRay(transform.position, dir - transform.position, Color.yellow);
-        
         transform.position += transform.forward * _moveSpeed * Time.deltaTime;
-
-        //velocityForTesting = _rb.velocity;
-
-        //Debug.Log(velocityForTesting);
 
         // ”даление ненужных позиций
         if (_positionHistory.Count > (_bodyParts.Count + 1) * _gap)
@@ -94,9 +112,6 @@ public class PlayerController : MonoBehaviour
         //—охранение позиции змейки
         _positionHistory.Insert(0, transform.position);
 
-
-
-        
         int index = 1;
         foreach (var body in _bodyParts)
         {
@@ -131,7 +146,6 @@ public class PlayerController : MonoBehaviour
             // _isRotating ограничивает поворот на 45 градусов раз в промежуток времени _timeToTurn
             if (_isRotating == false)
             {
-
                 // "ѕоворачиваем" переменную _input на 45 градусов, чтобы изометрическое движение было интуиивно
                 // пон€тно. Ќажима€ на "верх" игрок движетс€ "вверх".
                 var matrix = Matrix4x4.Rotate(Quaternion.Euler(0, 45, 0));
@@ -160,11 +174,12 @@ public class PlayerController : MonoBehaviour
 
     public void CheckBounds()
     {
-        if (transform.position.x < -9.9f || transform.position.x > 9.9f || transform.position.z > 9.9f || transform.position.z < -9.9f)
+        if (transform.position.x < -9.8f || transform.position.x > 9.8f || transform.position.z > 9.8f || transform.position.z < -9.8f)
         {
             Debug.Log("Game Over!");
-            _gameOver = true;
+            _gameManager.GameOver = true;
             _moveSpeed = 0;
+            StopAllMovement();
         }
         
     }
@@ -185,20 +200,13 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.gameObject.CompareTag("Wall"))
-        {
-            Debug.Log("Game Over!");
-            _moveSpeed = 0;
-        }
-
-        Debug.Log(collision.gameObject.name);
-
         //if (collision.collider.transform.parent != null && collision.collider.transform.parent.CompareTag("Body"))
         if (collision.gameObject.CompareTag("Body"))
         {
             Debug.Log("Game Over!");
-            _gameOver = true;
+            _gameManager.GameOver = true;
             _moveSpeed = 0;
+            StopAllMovement();
         }
     }
 
