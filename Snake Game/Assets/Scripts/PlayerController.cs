@@ -4,24 +4,19 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject _bodyPrefab;
-    [SerializeField]
-    private GameObject _jumpTriggerPrefab;
+    [SerializeField] private VariableJoystick _joystick;
 
-    [SerializeField]
-    private float _speed = 5;
-    [SerializeField]
-    private float _turnSpeed = 360;
+    [SerializeField] private GameObject _bodyPrefab;
+    [SerializeField] private GameObject _jumpTriggerPrefab;
+    [SerializeField] private GameManager _gameManager;
 
-    [SerializeField]
-    private float _jumpForce = 5;
+    [SerializeField] private float _walkSpeed = 5;
+    [SerializeField] private float _runSpeed = 10;
+    private float _moveSpeed;
 
-    [SerializeField]
-    private int _gap = 3;
+    [SerializeField] private int _gap = 3;
 
-    [SerializeField]
-    private GameManager _gameManager;
+
 
     private Vector3 _input;
 
@@ -35,49 +30,66 @@ public class PlayerController : MonoBehaviour
 
     private bool _isRotating;
     private float _timer;
-    [SerializeField]
-    private float _timeToTurn;
+    [SerializeField] private float _timeToTurn;
+
+    private bool _isRunning;
+    private bool _gameOver;
 
     void Start()
     {
         _spawner = FindObjectOfType<Spawner>();
         _rb = GetComponent<Rigidbody>();
+
+        _moveSpeed = _walkSpeed;
     }
 
-    void Update()
+    void FixedUpdate()
     {
-        GatherInput();
-        Look();
-        Move();
+        CheckBounds();
+        if (_gameOver == false)
+        {
+            GatherInput();
+            Look();
+            Move();
+        }
     }
 
     void GatherInput()
     {
-        _input = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
+        _input = new Vector3(_joystick.Horizontal, 0, _joystick.Vertical).normalized;
 
-        if (Input.GetKeyDown(KeyCode.Space))
-            _speed *= 2;
-        else if (Input.GetKeyUp(KeyCode.Space))
-            _speed = 5;
+        if (_input == Vector3.zero)
+            _input = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
 
-        if (Input.GetKeyDown(KeyCode.C))
-            Instantiate(_jumpTriggerPrefab, transform.position, Quaternion.identity);
+        if (_isRunning && _gameOver == false)
+            _moveSpeed = _runSpeed;
+        else if (_isRunning == false && _gameOver == false)
+            _moveSpeed = _walkSpeed;
+            
     }
+
+    public void SpawnJumpTrigger()
+    {
+        Instantiate(_jumpTriggerPrefab, transform.position, Quaternion.identity);
+    }
+
+    public void ToggleWalk() => _isRunning = !_isRunning;
+
 
     void Move()
     {
         //var dir = transform.position + transform.forward * _speed * 10 * Time.deltaTime;
         //Debug.DrawRay(transform.position, dir - transform.position, Color.yellow);
         
-        transform.position += transform.forward * _speed * Time.deltaTime;
+        transform.position += transform.forward * _moveSpeed * Time.deltaTime;
 
         //velocityForTesting = _rb.velocity;
 
         //Debug.Log(velocityForTesting);
 
         // Удаление ненужных позиций
-        //if (_positionHistory.Count > (_bodyParts.Count + 1) * _gap)
-        //    _positionHistory.RemoveAt(_positionHistory.Count - 1);
+        if (_positionHistory.Count > (_bodyParts.Count + 1) * _gap)
+            _positionHistory.RemoveAt(_positionHistory.Count - 1);
 
         //Сохранение позиции змейки
         _positionHistory.Insert(0, transform.position);
@@ -146,6 +158,17 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void CheckBounds()
+    {
+        if (transform.position.x < -9.9f || transform.position.x > 9.9f || transform.position.z > 9.9f || transform.position.z < -9.9f)
+        {
+            Debug.Log("Game Over!");
+            _gameOver = true;
+            _moveSpeed = 0;
+        }
+        
+    }
+
     public void Grow()
     {
         _gameManager.DecreaseNumberOfFood();
@@ -160,21 +183,12 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    /*private void OnTriggerEnter(Collider other)
-    {
-        if (other.transform.parent != null && other.transform.parent.CompareTag("Body"))
-        {
-            Debug.Log("Game Over!");
-            _speed = 0;
-        }
-    }*/
-
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.collider.gameObject.CompareTag("Wall"))
         {
             Debug.Log("Game Over!");
-            _speed = 0;
+            _moveSpeed = 0;
         }
 
         Debug.Log(collision.gameObject.name);
@@ -183,7 +197,8 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Body"))
         {
             Debug.Log("Game Over!");
-            _speed = 0;
+            _gameOver = true;
+            _moveSpeed = 0;
         }
     }
 
