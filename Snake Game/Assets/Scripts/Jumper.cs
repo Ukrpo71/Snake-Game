@@ -5,8 +5,8 @@ using UnityEngine;
 public class Jumper : MonoBehaviour
 {
     private Rigidbody _rb;
-    private bool _isJumping;
-    private bool _isInTheAir;
+    public bool _isJumping;
+    public bool _isInTheAir;
 
     [SerializeField] private float _jumpHeight;
 
@@ -22,11 +22,10 @@ public class Jumper : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody>();
 
-
         _timer = 0;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (_isJumping && _isInTheAir)
         {

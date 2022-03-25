@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class PlayerController : MonoBehaviour
     private float _moveSpeed;
 
     [SerializeField] private int _gap = 3;
+
+    [SerializeField] private GameObject _popUpText;
 
 
 
@@ -80,6 +83,11 @@ public class PlayerController : MonoBehaviour
             _moveSpeed = _runSpeed;
         else if (_isRunning == false && _gameManager.GameOver == false)
             _moveSpeed = _walkSpeed;
+
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            SpawnJumpTrigger();
+        }
             
     }
 
@@ -186,16 +194,19 @@ public class PlayerController : MonoBehaviour
 
     public void Grow()
     {
-        _gameManager.DecreaseNumberOfFood();
+        _gameManager.PlayerAte();
 
-        var body = Instantiate(_bodyPrefab);
-        body.transform.position = _positionHistory[_positionHistory.Count - 1];
+        for (int i = 1; i < _gameManager.Multiplier; i++)
+        {
+            var body = Instantiate(_bodyPrefab);
+            body.transform.position = _positionHistory[_positionHistory.Count - i];
+
+            _bodyParts.Add(body);
+
+        }
 
         //if (_bodyParts.Count > 0)
         //    _bodyParts[_bodyParts.Count - 1].GetComponent<SnakeBody>().AddBody(body);
-
-        _bodyParts.Add(body);
-
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -207,6 +218,16 @@ public class PlayerController : MonoBehaviour
             _gameManager.GameOver = true;
             _moveSpeed = 0;
             StopAllMovement();
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.transform.parent && other.gameObject.transform.parent.CompareTag("Food"))
+        {
+            Debug.Log("Player collided");
+            var body = Instantiate(_popUpText, transform.position, Quaternion.identity);
+            body.GetComponent<TextMeshPro>().text = "x" + _gameManager.Multiplier;
         }
     }
 

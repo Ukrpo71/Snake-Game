@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private GameObject _gameOverPanel;
     [SerializeField] private Text _scoreText;
+    [SerializeField] private Text _bonusText;
     [SerializeField] private Spawner _spawner;
 
     [SerializeField] private int _maxAmountOfFood;
@@ -17,6 +18,29 @@ public class GameManager : MonoBehaviour
     private int _respawnTreshold;
 
     private int _score;
+    private int _multiplier = 1;
+    public int Multiplier
+    {
+        get { return _multiplier; }
+        set
+        {
+            if (value >= 10)
+                value = 10;
+            _multiplier = value;
+        }
+    }
+    private float _bonusTime;
+    public float BonusTime
+    {
+        get { return _bonusTime; }
+        set
+        {
+            if (value >= 10)
+                value = 10;
+            _bonusTime = value;
+            UpdateBonusText();
+        }
+    }
 
 
     private bool _gameOver;
@@ -31,20 +55,21 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public int Score { 
-        get => _score; 
-        set
-        { 
-            _score = value;
-            UpdateScore();
-        } 
-    }
-
     void Start()
     {
         Init();
     }
 
+    private void Update()
+    {
+        if (BonusTime > 0)
+            BonusTime -= (Time.deltaTime);
+        if (BonusTime <= 0)
+        {
+            BonusTime = 0;
+            Multiplier = 1;
+        }
+    }
 
     private void Init()
     {
@@ -64,18 +89,40 @@ public class GameManager : MonoBehaviour
         _respawnTreshold = Random.Range(_minTreshold, _maxAmountOfFood / 2);
     }
 
-    public void DecreaseNumberOfFood()
+    public void PlayerAte()
     {
         _numberOfFoodOnTheField--;
         IncreaseScore();
+        IncreaseBonusTime();
+        Multiplier++;
+        UpdateUI();
+        
 
         if (_numberOfFoodOnTheField <= _respawnTreshold)
             ReInit();
     }
 
+    private void UpdateUI()
+    {
+        UpdateScore();
+
+    }
+
+    private void UpdateBonusText()
+    {
+        _bonusText.text = "Bonus Time: " + ((int)BonusTime);
+    }
+
+    private void IncreaseBonusTime()
+    {
+        if (BonusTime <= 0)
+            BonusTime = 10;
+        else
+            BonusTime++;
+    }
     private void IncreaseScore()
     {
-        Score++;
+        _score+= 1 * Multiplier;
     }
 
     private void UpdateScore()
