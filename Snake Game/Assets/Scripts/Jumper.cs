@@ -17,6 +17,7 @@ public class Jumper : MonoBehaviour
     private float _jumpingTime;
     private float _timer;
 
+    public Vector3 velocity;
 
     void Start()
     {
@@ -27,7 +28,8 @@ public class Jumper : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (_isJumping && _isInTheAir)
+        velocity = _rb.velocity;
+        if (_isJumping)
         {
             _timer += Time.deltaTime;
             if (_timer >= _jumpingTime || transform.position.y > _jumpHeight)
@@ -35,9 +37,13 @@ public class Jumper : MonoBehaviour
                 //Debug.Log(gameObject.name + " is in the air");
                 _rb.velocity = new Vector3(0, 0, 0);
                 _rb.AddForce(Vector3.down * _jumpForce, ForceMode.Impulse);
-                _isInTheAir = false;
+                _isInTheAir = true;
                 _timer = 0;
             }
+        }
+        else if (_isInTheAir == false)
+        {
+            _rb.velocity = Vector3.zero;
         }
     }
 
@@ -53,10 +59,11 @@ public class Jumper : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (_isJumping && collision.gameObject.name == "Floor")
+        if (_isInTheAir && collision.gameObject.name == "Floor")
         {
             _isJumping = false;
-            _rb.velocity = Vector3.zero;
+            _isInTheAir = false;
+            _rb.velocity = new Vector3(0,0,0);
         }
     }
 
@@ -64,7 +71,6 @@ public class Jumper : MonoBehaviour
     {
         _rb.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
         _isJumping = true;
-        _isInTheAir = true;
     }
 
 }

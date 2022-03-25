@@ -45,6 +45,14 @@ public class PlayerController : MonoBehaviour
         _moveSpeed = _walkSpeed;
     }
 
+    private void Update()
+    {
+
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            SpawnJumpTrigger();
+        }
+    }
     void FixedUpdate()
     {
         CheckBounds();
@@ -84,10 +92,6 @@ public class PlayerController : MonoBehaviour
         else if (_isRunning == false && _gameManager.GameOver == false)
             _moveSpeed = _walkSpeed;
 
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            SpawnJumpTrigger();
-        }
             
     }
 
@@ -199,7 +203,9 @@ public class PlayerController : MonoBehaviour
         for (int i = 1; i < _gameManager.Multiplier; i++)
         {
             var body = Instantiate(_bodyPrefab);
-            body.transform.position = _positionHistory[_positionHistory.Count - i];
+            var spawnPosition = _positionHistory[_positionHistory.Count - i];
+            spawnPosition.y = 0.25f;
+            body.transform.position = spawnPosition;
 
             _bodyParts.Add(body);
 
@@ -223,9 +229,8 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.transform.parent && other.gameObject.transform.parent.CompareTag("Food"))
+        if (other.gameObject.CompareTag("Food") || (other.gameObject.transform.parent && other.gameObject.transform.parent.CompareTag("Food")))
         {
-            Debug.Log("Player collided");
             var body = Instantiate(_popUpText, transform.position, Quaternion.identity);
             body.GetComponent<TextMeshPro>().text = "x" + _gameManager.Multiplier;
         }
