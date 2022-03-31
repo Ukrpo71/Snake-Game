@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.Events;
 
 public class PlayerController : MonoBehaviour
 {
@@ -19,8 +20,6 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private GameObject _popUpText;
 
-
-
     private Vector3 _input;
 
     public List<GameObject> _bodyParts = new List<GameObject>();
@@ -37,6 +36,8 @@ public class PlayerController : MonoBehaviour
 
     private bool _isRunning;
 
+    [SerializeField] private UnityEvent _playerLost;
+
     void Start()
     {
         _spawner = FindObjectOfType<Spawner>();
@@ -47,22 +48,21 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-
         if (Input.GetKeyDown(KeyCode.C))
         {
             SpawnJumpTrigger();
         }
     }
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         CheckBounds();
-        if (_gameManager.GameOver == false)
+        if (_gameManager.CurrentGameState == GameState.Playing)
         {
             GatherInput();
             Look();
             Move();
         }
-        else
+        else if (_gameManager.CurrentGameState == GameState.GameLost)
         {
             RotateAround();
         }
@@ -80,7 +80,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void GatherInput()
+    private void GatherInput()
     {
         _input = new Vector3(_joystick.Horizontal, 0, _joystick.Vertical).normalized;
 
@@ -104,6 +104,7 @@ public class PlayerController : MonoBehaviour
 
     public void StopAllMovement()
     {
+        _moveSpeed = 0;
         GetComponent<Rigidbody>().velocity = Vector3.zero;
         GetComponent<Rigidbody>().isKinematic = true;
         foreach (var body in _bodyParts)
@@ -130,25 +131,10 @@ public class PlayerController : MonoBehaviour
             Vector3 point = _positionHistory[Mathf.Min(index * _gap, _positionHistory.Count - 1)];
             point.y = body.transform.position.y;
             Vector3 moveDirection = point - body.transform.position;
-            //body.transform.position += moveDirection * _speed * Time.deltaTime;
             body.transform.LookAt(point);
             body.transform.position = point;
             index++;
         }
-        
-
-        /*if (_bodyParts.Count > 0)
-        {
-            var body = _bodyParts[0];
-            Vector3 point = _positionHistory[Mathf.Min(_gap, _positionHistory.Count - 1)];
-            //point.y = 0.5f;
-            Vector3 moveDirection = point - body.transform.position;
-            moveDirection.y = 0;
-            //body.transform.position += moveDirection * (_speed) * Time.deltaTime;
-            body.transform.LookAt(point);
-            body.transform.position = point;
-            
-        }*/
     }
 
     void Look()
@@ -198,6 +184,8 @@ public class PlayerController : MonoBehaviour
 
     public void Grow()
     {
+        PopUpMultiplierText();
+
         _gameManager.PlayerAte();
 
         for (int i = 1; i < _gameManager.Multiplier; i++)
@@ -208,32 +196,24 @@ public class PlayerController : MonoBehaviour
             body.transform.position = spawnPosition;
 
             _bodyParts.Add(body);
-
         }
-
-        //if (_bodyParts.Count > 0)
-        //    _bodyParts[_bodyParts.Count - 1].GetComponent<SnakeBody>().AddBody(body);
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         //if (collision.collider.transform.parent != null && collision.collider.transform.parent.CompareTag("Body"))
-        if (collision.gameObject.CompareTag("Body"))
+        if (collision.gameObject.CompareTag("Body") || collision.gameObject.CompareTag("Wall"))
         {
-            Debug.Log("Game Over!");
             _gameManager.GameOver = true;
-            _moveSpeed = 0;
-            StopAllMovement();
+
+            _playerLost.Invoke();
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void PopUpMultiplierText()
     {
-        if (other.gameObject.CompareTag("Food") || (other.gameObject.transform.parent && other.gameObject.transform.parent.CompareTag("Food")))
-        {
-            var body = Instantiate(_popUpText, transform.position, Quaternion.identity);
-            body.GetComponent<TextMeshPro>().text = "x" + _gameManager.Multiplier;
-        }
+        var body = Instantiate(_popUpText, transform.position, Quaternion.identity);
+        body.GetComponent<TextMeshPro>().text = "x" + _gameManager.Multiplier;
     }
 
 

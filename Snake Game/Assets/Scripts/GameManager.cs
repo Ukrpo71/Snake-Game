@@ -7,12 +7,17 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private GameObject _gameOverPanel;
+    [SerializeField] private GameObject _gameWonPanel;
+
+
     [SerializeField] private Text _scoreText;
     [SerializeField] private Text _bonusText;
     [SerializeField] private Spawner _spawner;
 
     [SerializeField] private int _maxAmountOfFood;
     [SerializeField] private int _minTreshold;
+
+    [SerializeField] private int _levelScoreGoal;
 
     private int _numberOfFoodOnTheField;
     private int _respawnTreshold;
@@ -42,6 +47,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private GameState _gameState;
+
+    public GameState CurrentGameState
+    {
+        get { return _gameState; }
+        set { }
+    }
 
     private bool _gameOver;
     public bool GameOver
@@ -55,20 +67,49 @@ public class GameManager : MonoBehaviour
         }
     }
 
+
+    private void ChangeState(GameState gameState)
+    {
+        _gameState = gameState;
+
+        switch(_gameState)
+        {
+            case (GameState.WaitingInput):
+                break;
+            case (GameState.SettingUp):
+                Init();
+                break;
+            case (GameState.Playing):
+                break;
+            case (GameState.GameWon):
+                ShowGameWonPanel();
+                break;
+            case (GameState.GameLost):
+                break;
+        }
+    }
+
+    public void ShowGameWonPanel()
+    {
+        _gameWonPanel.SetActive(true);
+    }
+
+    public void LoadLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
     void Start()
     {
-        Init();
+        ChangeState(GameState.WaitingInput);
     }
 
     private void Update()
     {
-        if (BonusTime > 0)
-            BonusTime -= (Time.deltaTime);
-        if (BonusTime <= 0)
-        {
-            BonusTime = 0;
-            Multiplier = 1;
-        }
+        UpdateBonusTime();
+
+        if (_gameState == GameState.WaitingInput && Input.GetMouseButtonDown(0))
+            ChangeState(GameState.SettingUp);
     }
 
     private void Init()
@@ -78,7 +119,11 @@ public class GameManager : MonoBehaviour
         _numberOfFoodOnTheField = amountToSpawn;
 
         _respawnTreshold = Random.Range(_minTreshold, _maxAmountOfFood / 2);
+
+        ChangeState(GameState.Playing);
     }
+
+
 
     private void ReInit()
     {
@@ -105,7 +150,6 @@ public class GameManager : MonoBehaviour
     private void UpdateUI()
     {
         UpdateScore();
-
     }
 
     private void UpdateBonusText()
@@ -123,15 +167,29 @@ public class GameManager : MonoBehaviour
     private void IncreaseScore()
     {
         _score+= 1 * Multiplier;
-    }
 
+        if (_score >= _levelScoreGoal)
+            ChangeState(GameState.GameWon);
+
+    }
+    private void UpdateBonusTime()
+    {
+        if (BonusTime > 0)
+            BonusTime -= (Time.deltaTime);
+        if (BonusTime <= 0)
+        {
+            BonusTime = 0;
+            Multiplier = 1;
+        }
+    }
     private void UpdateScore()
     {
-        _scoreText.text = "Score: " + _score;
+        _scoreText.text = "Score: " + _score + "/" + _levelScoreGoal;
     }
 
     public void ShowGameOverPanel()
     {
+        ChangeState(GameState.GameLost);
         _gameOverPanel.SetActive(true);
     }
 
@@ -139,4 +197,13 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
+}
+
+public enum GameState
+{
+    WaitingInput,
+    SettingUp,
+    Playing,
+    GameWon,
+    GameLost
 }

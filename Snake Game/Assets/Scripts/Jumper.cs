@@ -59,7 +59,7 @@ public class Jumper : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (_isInTheAir && collision.gameObject.name == "Floor")
+        if (_isInTheAir && collision.gameObject.CompareTag("Floor"))
         {
             _isJumping = false;
             _isInTheAir = false;
