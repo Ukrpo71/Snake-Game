@@ -18,17 +18,12 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private int _gap = 3;
 
-    [SerializeField] private GameObject _popUpText;
+    [SerializeField] private TextMeshPro _popUpText;
 
     private Vector3 _input;
 
     public List<GameObject> _bodyParts = new List<GameObject>();
     public List<Vector3> _positionHistory = new List<Vector3>();
-
-    private Spawner _spawner;
-
-    private Rigidbody _rb;
-
 
     private bool _isRotating;
     private float _timer;
@@ -40,9 +35,6 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        _spawner = FindObjectOfType<Spawner>();
-        _rb = GetComponent<Rigidbody>();
-
         _moveSpeed = _walkSpeed;
     }
 
@@ -91,8 +83,6 @@ public class PlayerController : MonoBehaviour
             _moveSpeed = _runSpeed;
         else if (_isRunning == false && _gameManager.GameOver == false)
             _moveSpeed = _walkSpeed;
-
-            
     }
 
     public void SpawnJumpTrigger()
@@ -174,10 +164,9 @@ public class PlayerController : MonoBehaviour
     {
         if (transform.position.x < -9.8f || transform.position.x > 9.8f || transform.position.z > 9.8f || transform.position.z < -9.8f)
         {
-            Debug.Log("Game Over!");
             _gameManager.GameOver = true;
-            _moveSpeed = 0;
-            StopAllMovement();
+
+            _playerLost.Invoke();
         }
         
     }
@@ -212,10 +201,7 @@ public class PlayerController : MonoBehaviour
 
     private void PopUpMultiplierText()
     {
-        var body = Instantiate(_popUpText, transform.position, Quaternion.identity);
-        body.GetComponent<TextMeshPro>().text = "x" + _gameManager.Multiplier;
+        var popUpText = Instantiate(_popUpText, transform.position, Quaternion.identity);
+        popUpText.text = "x" + _gameManager.Multiplier;
     }
-
-
-
 }

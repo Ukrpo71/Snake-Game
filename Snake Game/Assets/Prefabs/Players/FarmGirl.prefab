@@ -1093,7 +1093,7 @@ GameObject:
   - component: {fileID: 1393658305477940461}
   - component: {fileID: 1393658305477940462}
   m_Layer: 0
-  m_Name: SM_Chr_FarmGirl_01
+  m_Name: FarmGirl
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

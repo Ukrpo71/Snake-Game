@@ -5301,17 +5301,5 @@ PrefabInstance:
       propertyPath: _playerLost.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1256289562}
-    - target: {fileID: 2144489874766075839, guid: 872e160752c10754da76eb0f119c52fb, type: 3}
-      propertyPath: _joystick
-      value: 
-      objectReference: {fileID: 564616095}
-    - target: {fileID: 2144489874766075839, guid: 872e160752c10754da76eb0f119c52fb, type: 3}
-      propertyPath: _gameManager
-      value: 
-      objectReference: {fileID: 1256289562}
-    - target: {fileID: 2144489874766075839, guid: 872e160752c10754da76eb0f119c52fb, type: 3}
-      propertyPath: _playerLost.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 1256289562}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 872e160752c10754da76eb0f119c52fb, type: 3}

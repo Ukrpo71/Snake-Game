@@ -123,8 +123,6 @@ public class GameManager : MonoBehaviour
         ChangeState(GameState.Playing);
     }
 
-
-
     private void ReInit()
     {
         var amountToSpawn = Random.Range(_minTreshold, _maxAmountOfFood - _numberOfFoodOnTheField);
