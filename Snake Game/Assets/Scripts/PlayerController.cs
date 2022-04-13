@@ -27,11 +27,22 @@ public class PlayerController : MonoBehaviour
 
     private bool _isRotating;
     private float _timer;
+
     [SerializeField] private float _timeToTurn;
+
+    [SerializeField] private float _timeoutToTriggerJumpOverself;
+    private float _lastTimeJumped;
+    private bool _playerJumpedOverself;
 
     private bool _isRunning;
 
     [SerializeField] private UnityEvent _playerLost;
+
+    public void PlayerLost()
+    {
+        _playerLost.Invoke();
+    }
+
 
     void Start()
     {
@@ -44,10 +55,15 @@ public class PlayerController : MonoBehaviour
         {
             SpawnJumpTrigger();
         }
+
+        if (_playerJumpedOverself)
+            if (_lastTimeJumped + _timeoutToTriggerJumpOverself <= Time.time)
+            {
+                _playerJumpedOverself = false;
+            }
     }
     private void FixedUpdate()
     {
-        CheckBounds();
         if (_gameManager.CurrentGameState == GameState.Playing)
         {
             GatherInput();
@@ -160,15 +176,19 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void CheckBounds()
+    public void JumpOverObstacle()
     {
-        if (transform.position.x < -9.8f || transform.position.x > 9.8f || transform.position.z > 9.8f || transform.position.z < -9.8f)
-        {
-            _gameManager.GameOver = true;
+        _gameManager.PlayerJumpedOver(true);
+    }
 
-            _playerLost.Invoke();
+    public void JumpOverSelf()
+    {
+        if (_playerJumpedOverself == false)
+        {
+            _playerJumpedOverself = true;
+            _lastTimeJumped = Time.time;
+            _gameManager.PlayerJumpedOver(false);
         }
-        
     }
 
     public void Grow()
@@ -195,7 +215,7 @@ public class PlayerController : MonoBehaviour
         {
             _gameManager.GameOver = true;
 
-            _playerLost.Invoke();
+            PlayerLost();
         }
     }
 

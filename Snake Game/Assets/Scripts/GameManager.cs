@@ -6,23 +6,28 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] private Spawner _spawner;
+
     [SerializeField] private GameObject _gameOverPanel;
     [SerializeField] private GameObject _gameWonPanel;
 
-
     [SerializeField] private Text _scoreText;
+    [SerializeField] private Text _timeToBeatText;
     [SerializeField] private Text _bonusText;
-    [SerializeField] private Spawner _spawner;
 
     [SerializeField] private int _maxAmountOfFood;
     [SerializeField] private int _minTreshold;
 
-    [SerializeField] private int _levelScoreGoal;
+    private LevelGoals _levelGoals;
 
     private int _numberOfFoodOnTheField;
     private int _respawnTreshold;
 
     private int _score;
+    private float _remainingTime;
+    private int _timesJumpedOverObstacles = 0;
+    private int _timesJumpedOverSelf = 0;
+
     private int _multiplier = 1;
     public int Multiplier
     {
@@ -34,7 +39,7 @@ public class GameManager : MonoBehaviour
             _multiplier = value;
         }
     }
-    private float _bonusTime;
+    private float _bonusTime = 0;
     public float BonusTime
     {
         get { return _bonusTime; }
@@ -47,13 +52,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private GameState _gameState;
-
-    public GameState CurrentGameState
-    {
-        get { return _gameState; }
-        set { }
-    }
+    public GameState CurrentGameState { get; private set; }
 
     private bool _gameOver;
     public bool GameOver
@@ -63,16 +62,15 @@ public class GameManager : MonoBehaviour
         { 
             _gameOver = value;
             if (_gameOver)
-                ShowGameOverPanel();
+                ChangeState(GameState.GameLost);
         }
     }
 
-
     private void ChangeState(GameState gameState)
     {
-        _gameState = gameState;
+        CurrentGameState = gameState;
 
-        switch(_gameState)
+        switch(CurrentGameState)
         {
             case (GameState.WaitingInput):
                 break;
@@ -85,6 +83,7 @@ public class GameManager : MonoBehaviour
                 ShowGameWonPanel();
                 break;
             case (GameState.GameLost):
+                ShowGameOverPanel();
                 break;
         }
     }
@@ -99,16 +98,34 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
+    public void ShowGameOverPanel()
+    {
+        _gameOverPanel.SetActive(true);
+    }
+
+    public void RestartLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
     void Start()
     {
+        _levelGoals = GetComponent<LevelGoals>();
+        _remainingTime = _levelGoals.TimeToBeat;
+
         ChangeState(GameState.WaitingInput);
+        UpdateScore();
     }
 
     private void Update()
     {
-        UpdateBonusTime();
+        if (CurrentGameState == GameState.Playing)
+        {
+            UpdateBonusTime();
+            UpdateRemainingTime();
+        }
 
-        if (_gameState == GameState.WaitingInput && Input.GetMouseButtonDown(0))
+        if (CurrentGameState == GameState.WaitingInput && Input.GetMouseButtonDown(0))
             ChangeState(GameState.SettingUp);
     }
 
@@ -136,18 +153,14 @@ public class GameManager : MonoBehaviour
     {
         _numberOfFoodOnTheField--;
         IncreaseScore();
+        //BonusTime++;
         IncreaseBonusTime();
+        Debug.Log("Player Ate");
         Multiplier++;
-        UpdateUI();
-        
+        UpdateScore();
 
         if (_numberOfFoodOnTheField <= _respawnTreshold)
             ReInit();
-    }
-
-    private void UpdateUI()
-    {
-        UpdateScore();
     }
 
     private void UpdateBonusText()
@@ -166,10 +179,34 @@ public class GameManager : MonoBehaviour
     {
         _score+= 1 * Multiplier;
 
-        if (_score >= _levelScoreGoal)
+        if (IsGoalReached())
             ChangeState(GameState.GameWon);
 
     }
+
+    public void PlayerJumpedOver(bool jumpedOverObstacle)
+    {
+        if (_levelGoals.JumpTreshold <= _score)
+        {
+            if (jumpedOverObstacle)
+                _timesJumpedOverObstacles++;
+            else
+                _timesJumpedOverSelf++;
+
+            UpdateScore();
+
+            if (IsGoalReached())
+                ChangeState(GameState.GameWon);
+        }
+    }
+
+    private bool IsGoalReached()
+    {
+        return (_score >= _levelGoals.Score && 
+            _timesJumpedOverObstacles >= _levelGoals.JumpsOverObstacles 
+            && _timesJumpedOverSelf > _levelGoals.JumpsOverYourself);
+    }
+
     private void UpdateBonusTime()
     {
         if (BonusTime > 0)
@@ -180,21 +217,33 @@ public class GameManager : MonoBehaviour
             Multiplier = 1;
         }
     }
+
+    private void UpdateRemainingTime()
+    {
+        if (_levelGoals.TimeToBeat > 0 && CurrentGameState == GameState.Playing)
+        {
+            _remainingTime -= Time.deltaTime;
+            _timeToBeatText.text = ((int)_remainingTime).ToString();
+
+            if (_remainingTime <= 0)
+            {
+                GameOver = true;
+            }
+        }
+    }
+
     private void UpdateScore()
     {
-        _scoreText.text = "Score: " + _score + "/" + _levelScoreGoal;
+        _scoreText.text = "Score: " + _score + "/" + _levelGoals.Score;
+        if (_levelGoals.JumpTreshold > 0)
+            _scoreText.text += "\n" + "Treshold: " + _levelGoals.JumpTreshold;
+        if (_levelGoals.JumpsOverObstacles > 0)
+            _scoreText.text += "\n" + "Jumps ob.: " + _timesJumpedOverObstacles + "/" + _levelGoals.JumpsOverObstacles;
+        if (_levelGoals.JumpsOverYourself > 0)
+            _scoreText.text += "\n" + "Jumps ys.: " + _timesJumpedOverSelf + "/" + _levelGoals.JumpsOverYourself;
+
     }
 
-    public void ShowGameOverPanel()
-    {
-        ChangeState(GameState.GameLost);
-        _gameOverPanel.SetActive(true);
-    }
-
-    public void RestartLevel()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    }
 }
 
 public enum GameState

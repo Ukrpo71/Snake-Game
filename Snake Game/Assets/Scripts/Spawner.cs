@@ -8,7 +8,7 @@ public class Spawner : MonoBehaviour
     private GameObject _spawnPrefab;
 
     [SerializeField]
-    private GameObject _floor;
+    private BoxCollider _floor;
 
     public void Spawn(int amount)
     {
@@ -31,10 +31,10 @@ public class Spawner : MonoBehaviour
 
     private Vector3 GenerateRandomSpawnPosition()
     {
-        var xBounds = _floor.GetComponent<BoxCollider>().bounds.size.x;
-        var zBounds = _floor.GetComponent<BoxCollider>().bounds.size.z;
+        var xBounds = _floor.bounds.size.x;
+        var zBounds = _floor.bounds.size.z;
 
-        var yBounds = _floor.GetComponent<BoxCollider>().bounds.size.y;
+        var yBounds = _floor.bounds.size.y;
 
         Vector3 randomPosition = new Vector3(Random.Range(-xBounds / 2, xBounds / 2), yBounds * 0.61f,Random.Range(-yBounds / 2, yBounds));
         return randomPosition;
@@ -43,8 +43,8 @@ public class Spawner : MonoBehaviour
 
     private Vector3 GenerateRandomSpawnPositionAwayFrom(Vector3 awayFrom)
     {
-        var point = Random.insideUnitSphere.normalized * Random.Range(3, 9);
-        point.y = 0.5f;
+        var point = Random.insideUnitSphere.normalized * Random.Range(_floor.bounds.size.x / 3, _floor.bounds.size.x/2 - 1);
+        point.y = 0.25f;
         return point;
     }
 
