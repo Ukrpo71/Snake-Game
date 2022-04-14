@@ -34,7 +34,6 @@ public class Jumper : MonoBehaviour
             _timer += Time.deltaTime;
             if (_timer >= _jumpingTime || transform.position.y > _jumpHeight)
             {
-                //Debug.Log(gameObject.name + " is in the air");
                 _rb.velocity = new Vector3(0, 0, 0);
                 _rb.AddForce(Vector3.down * _jumpForce, ForceMode.Impulse);
                 _isInTheAir = true;
@@ -52,9 +51,7 @@ public class Jumper : MonoBehaviour
         if (other.gameObject.TryGetComponent(out JumpTrigger jumpTrigger) && _isJumping == false)
         {
             Jump();
-            //Debug.Log(gameObject.name + " jumped, " + _isJumping);
         }
-
     }
 
     private void OnCollisionEnter(Collision collision)

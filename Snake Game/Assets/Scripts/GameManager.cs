@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,8 +13,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject _gameWonPanel;
 
     [SerializeField] private Text _scoreText;
-    [SerializeField] private Text _timeToBeatText;
-    [SerializeField] private Text _bonusText;
+    [SerializeField] private Text _jumpsOverObstaclesText;
+    [SerializeField] private Text _jumpsOverYourselfText;
+    [SerializeField] private TextMeshProUGUI _timeToBeatText;
+    [SerializeField] private TextMeshProUGUI _bonusText;
 
     [SerializeField] private int _maxAmountOfFood;
     [SerializeField] private int _minTreshold;
@@ -153,9 +156,7 @@ public class GameManager : MonoBehaviour
     {
         _numberOfFoodOnTheField--;
         IncreaseScore();
-        //BonusTime++;
         IncreaseBonusTime();
-        Debug.Log("Player Ate");
         Multiplier++;
         UpdateScore();
 
@@ -204,7 +205,7 @@ public class GameManager : MonoBehaviour
     {
         return (_score >= _levelGoals.Score && 
             _timesJumpedOverObstacles >= _levelGoals.JumpsOverObstacles 
-            && _timesJumpedOverSelf > _levelGoals.JumpsOverYourself);
+            && _timesJumpedOverSelf >= _levelGoals.JumpsOverYourself);
     }
 
     private void UpdateBonusTime()
@@ -235,12 +236,14 @@ public class GameManager : MonoBehaviour
     private void UpdateScore()
     {
         _scoreText.text = "Score: " + _score + "/" + _levelGoals.Score;
-        if (_levelGoals.JumpTreshold > 0)
-            _scoreText.text += "\n" + "Treshold: " + _levelGoals.JumpTreshold;
+        
+        //if (_levelGoals.JumpTreshold > 0)
+        //    _scoreText.text += "\n" + "Treshold: " + _levelGoals.JumpTreshold;
+        
         if (_levelGoals.JumpsOverObstacles > 0)
-            _scoreText.text += "\n" + "Jumps ob.: " + _timesJumpedOverObstacles + "/" + _levelGoals.JumpsOverObstacles;
+            _jumpsOverObstaclesText.text = _timesJumpedOverObstacles + "/" + _levelGoals.JumpsOverObstacles;
         if (_levelGoals.JumpsOverYourself > 0)
-            _scoreText.text += "\n" + "Jumps ys.: " + _timesJumpedOverSelf + "/" + _levelGoals.JumpsOverYourself;
+            _jumpsOverYourselfText.text = _timesJumpedOverSelf + "/" + _levelGoals.JumpsOverYourself;
 
     }
 
