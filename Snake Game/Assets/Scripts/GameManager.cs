@@ -12,9 +12,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject _gameOverPanel;
     [SerializeField] private GameObject _gameWonPanel;
 
-    [SerializeField] private Text _scoreText;
-    [SerializeField] private Text _jumpsOverObstaclesText;
-    [SerializeField] private Text _jumpsOverYourselfText;
+    [SerializeField] private GameObject _jumpsOverObstaclesPanel;
+    [SerializeField] private GameObject _jumpsOverYourselfPanel;
+
+
+    [SerializeField] private TextMeshProUGUI _scoreText;
+    [SerializeField] private TextMeshProUGUI _jumpsOverObstaclesText;
+    [SerializeField] private TextMeshProUGUI _jumpsOverYourselfText;
     [SerializeField] private TextMeshProUGUI _timeToBeatText;
     [SerializeField] private TextMeshProUGUI _bonusText;
 
@@ -69,6 +73,35 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    void Start()
+    {
+        _levelGoals = GetComponent<LevelGoals>();
+        _remainingTime = _levelGoals.TimeToBeat;
+        InitScorePanel();
+        ChangeState(GameState.WaitingInput);
+        UpdateScore();
+    }
+
+    private void Update()
+    {
+        if (CurrentGameState == GameState.Playing)
+        {
+            UpdateBonusTime();
+            UpdateRemainingTime();
+        }
+
+        if (CurrentGameState == GameState.WaitingInput && Input.GetMouseButtonDown(0))
+            ChangeState(GameState.SettingUp);
+    }
+
+    private void InitScorePanel()
+    {
+        if (_levelGoals.JumpsOverObstacles <= 0)
+            _jumpsOverObstaclesPanel.SetActive(false);
+        if (_levelGoals.JumpsOverYourself <= 0)
+            _jumpsOverYourselfPanel.SetActive(false);
+    }
+
     private void ChangeState(GameState gameState)
     {
         CurrentGameState = gameState;
@@ -111,26 +144,7 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
-    void Start()
-    {
-        _levelGoals = GetComponent<LevelGoals>();
-        _remainingTime = _levelGoals.TimeToBeat;
-
-        ChangeState(GameState.WaitingInput);
-        UpdateScore();
-    }
-
-    private void Update()
-    {
-        if (CurrentGameState == GameState.Playing)
-        {
-            UpdateBonusTime();
-            UpdateRemainingTime();
-        }
-
-        if (CurrentGameState == GameState.WaitingInput && Input.GetMouseButtonDown(0))
-            ChangeState(GameState.SettingUp);
-    }
+    
 
     private void Init()
     {
@@ -166,7 +180,7 @@ public class GameManager : MonoBehaviour
 
     private void UpdateBonusText()
     {
-        _bonusText.text = "Bonus Time: " + ((int)BonusTime);
+        _bonusText.text = "Bonus Time: " + ((int)BonusTime).ToString();
     }
 
     private void IncreaseBonusTime()
@@ -179,6 +193,24 @@ public class GameManager : MonoBehaviour
     private void IncreaseScore()
     {
         _score+= 1 * Multiplier;
+
+        if (_levelGoals.JumpTreshold > 0 && _score >= _levelGoals.JumpTreshold)
+        {
+            _scoreText.color = Color.yellow;
+            _scoreText.fontStyle = FontStyles.Bold;
+
+            if (_jumpsOverObstaclesPanel.activeInHierarchy)
+            {
+                _jumpsOverObstaclesPanel.GetComponent<CanvasGroup>().alpha = 1;
+                _jumpsOverObstaclesText.fontStyle = FontStyles.Bold;
+
+            }
+            if (_jumpsOverYourselfPanel.activeInHierarchy)
+            {
+                _jumpsOverYourselfPanel.GetComponent<CanvasGroup>().alpha = 1;
+                _jumpsOverYourselfText.fontStyle = FontStyles.Bold;
+            }
+        }
 
         if (IsGoalReached())
             ChangeState(GameState.GameWon);
@@ -211,10 +243,14 @@ public class GameManager : MonoBehaviour
     private void UpdateBonusTime()
     {
         if (BonusTime > 0)
+        {
+            _bonusText.gameObject.SetActive(true);
             BonusTime -= (Time.deltaTime);
+        }
         if (BonusTime <= 0)
         {
             BonusTime = 0;
+            _bonusText.gameObject.SetActive(false);
             Multiplier = 1;
         }
     }
@@ -235,14 +271,12 @@ public class GameManager : MonoBehaviour
 
     private void UpdateScore()
     {
-        _scoreText.text = "Score: " + _score + "/" + _levelGoals.Score;
+        _scoreText.text = _score + "/" + _levelGoals.Score;
         
-        //if (_levelGoals.JumpTreshold > 0)
-        //    _scoreText.text += "\n" + "Treshold: " + _levelGoals.JumpTreshold;
-        
-        if (_levelGoals.JumpsOverObstacles > 0)
+        if (_levelGoals.JumpsOverObstacles > 0 && _timesJumpedOverObstacles <= _levelGoals.JumpsOverObstacles)
             _jumpsOverObstaclesText.text = _timesJumpedOverObstacles + "/" + _levelGoals.JumpsOverObstacles;
-        if (_levelGoals.JumpsOverYourself > 0)
+
+        if (_levelGoals.JumpsOverYourself > 0 && _timesJumpedOverSelf <= _levelGoals.JumpsOverYourself)
             _jumpsOverYourselfText.text = _timesJumpedOverSelf + "/" + _levelGoals.JumpsOverYourself;
 
     }
