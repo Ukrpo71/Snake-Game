@@ -5,15 +5,6 @@ using UnityEngine;
 public class Food : MonoBehaviour
 {
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.TryGetComponent(out PlayerController player))
-        {
-            player.Grow();
-            Destroy(gameObject);
-        }
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.TryGetComponent(out PlayerController player))
