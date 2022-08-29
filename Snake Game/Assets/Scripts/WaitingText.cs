@@ -9,7 +9,7 @@ public class WaitingText : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonUp(0))
             _event.Invoke();
     }
 }

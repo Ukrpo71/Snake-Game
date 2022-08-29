@@ -17,6 +17,7 @@ public class AnimationSelector : MonoBehaviour
         Idle,
         SillyDancing,
         RumbaDancing,
-        HipHop
+        HipHop,
+        Walking
     }
 }

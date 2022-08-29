@@ -7,9 +7,9 @@ public class PlayerSkin : MonoBehaviour
     private int selectedIndex = 0;
     void Start()
     {
-        if(GameObject.Find("PlayerSelectionData").TryGetComponent(out SelectedPlayerData selectedPlayerData))
+        if(GameObject.Find("DataPersist").TryGetComponent(out DataPersist dataPersist))
         {
-            selectedIndex = selectedPlayerData.SelectedIndex;
+            selectedIndex = dataPersist.PlayerData.SelectedSkin;
         }
 
         foreach (Transform child in transform)

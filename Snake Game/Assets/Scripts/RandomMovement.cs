@@ -38,7 +38,7 @@ public class RandomMovement : MonoBehaviour
 
         if (Physics.Raycast(transform.position, movementDirection, out RaycastHit hitInfo, _range))
         {
-            if (hitInfo.collider.CompareTag("Wall"))
+            if (hitInfo.collider.CompareTag("Wall") || hitInfo.collider.CompareTag("Obstacle"))
             {
                 return FindNextTarget();
             }

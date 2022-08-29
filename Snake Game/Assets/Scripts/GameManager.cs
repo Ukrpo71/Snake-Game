@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
+using System.Linq;
 
 public class GameManager : MonoBehaviour
 {
@@ -144,7 +145,28 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
-    
+    public void NextLevel()
+    {
+        int levelNumber = int.Parse(SceneManager.GetActiveScene().name);
+        var dataPersist = FindObjectOfType<DataPersist>();
+
+        var level = dataPersist.PlayerData.Levels.FirstOrDefault(l => l.Number == levelNumber);
+        level.IsFinished = true;
+
+        var nextLevel = dataPersist.PlayerData.Levels.FirstOrDefault(l => l.IsUnlocked == false);
+        if (nextLevel != null)
+        {
+            nextLevel.IsUnlocked = true;
+
+            dataPersist.Save();
+
+            SceneManager.LoadScene("LevelSelection");
+        }
+        else
+        {
+            SceneManager.LoadScene("HomeScreen");
+        }
+    }
 
     private void Init()
     {

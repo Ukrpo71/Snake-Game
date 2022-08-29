@@ -157,8 +157,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 2.724594, y: 3.4057007}
+  m_SizeDelta: {x: -111.704, y: -69.4746}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &63368053
 MonoBehaviour:
@@ -180,7 +180,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Play
+  m_text: Select
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
@@ -207,12 +207,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
+  m_fontSize: 72.05
   m_fontSizeBase: 72
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMax: 100
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -371,7 +371,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 725, y: 40}
+  m_AnchoredPosition: {x: 725, y: 4}
   m_SizeDelta: {x: 108, y: 94}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &118133825
@@ -443,18 +443,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1369021896}
-        m_TargetAssemblyTypeName: CharacterName, Assembly-CSharp
-        m_MethodName: ChangeText
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Shopkeeper
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 740597338}
         m_TargetAssemblyTypeName: SelectedPlayerData, Assembly-CSharp
         m_MethodName: SelectLevel
@@ -477,6 +465,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1258971806}
+        m_TargetAssemblyTypeName: CharacterSelectionUISetup, Assembly-CSharp
+        m_MethodName: SelectCharacter
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: ShopKeeper
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &118133827
@@ -611,6 +611,7 @@ RectTransform:
   - {fileID: 1052025504}
   - {fileID: 2026857481}
   - {fileID: 1369021893}
+  - {fileID: 1854020915}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1030,7 +1031,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.75686276, g: 1, b: 0.42745098, a: 0}
+  m_BackGroundColor: {r: 0.5568628, g: 1, b: 0.75686276, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1413,18 +1414,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1369021896}
-        m_TargetAssemblyTypeName: CharacterName, Assembly-CSharp
-        m_MethodName: ChangeText
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Male
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 740597338}
         m_TargetAssemblyTypeName: SelectedPlayerData, Assembly-CSharp
         m_MethodName: SelectLevel
@@ -1447,6 +1436,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1258971806}
+        m_TargetAssemblyTypeName: CharacterSelectionUISetup, Assembly-CSharp
+        m_MethodName: SelectCharacter
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Farmer_Male_Old
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &305288349
@@ -1645,7 +1646,7 @@ GameObject:
   - component: {fileID: 499824204}
   - component: {fileID: 499824203}
   m_Layer: 5
-  m_Name: Character
+  m_Name: SummerGirl
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1726,6 +1727,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animation: 4
+--- !u!114 &523595146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 523595142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf23f57fd7573f04db33a41c1393c172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _skin:
+    Name: Jock
+    NameForPlaceholder: Jock
+    IsUnlocked: 0
+    Cost: 0
+    UnlockingRequirement: 10
 --- !u!1 &536810899 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 217429467989036952, guid: c230bbfa4289c094f94207825b23a381, type: 3}
@@ -1744,6 +1763,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animation: 2
+--- !u!114 &536810903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 536810899}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf23f57fd7573f04db33a41c1393c172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _skin:
+    Name: Farmer_Female
+    NameForPlaceholder: Farm Girl
+    IsUnlocked: 0
+    Cost: 0
+    UnlockingRequirement: 5
 --- !u!1 &554232850
 GameObject:
   m_ObjectHideFlags: 0
@@ -1819,6 +1856,215 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 554232850}
   m_CullTransparentMesh: 1
+--- !u!1 &596072988
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 596072989}
+  - component: {fileID: 596072990}
+  - component: {fileID: 596072991}
+  m_Layer: 5
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &596072989
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 596072988}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1854020915}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 7.9005127, y: 1.1286011}
+  m_SizeDelta: {x: -106.0924, y: -69.9758}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &596072990
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 596072988}
+  m_CullTransparentMesh: 1
+--- !u!114 &596072991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 596072988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: To unlock this skin finish 20 levels
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 39c0d45e661292d49947df1e20c5fcd9, type: 2}
+  m_sharedMaterial: {fileID: -3381331009256049497, guid: 39c0d45e661292d49947df1e20c5fcd9, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 54.6
+  m_fontSizeBase: 36
+  m_fontWeight: 400
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &651479615
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 651479618}
+  - component: {fileID: 651479617}
+  - component: {fileID: 651479616}
+  m_Layer: 0
+  m_Name: PreviousColor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &651479616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 651479615}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.75686276, g: 1, b: 0.42745098, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &651479617
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 651479615}
+  m_CullTransparentMesh: 1
+--- !u!224 &651479618
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 651479615}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -6.0423946}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 1490.4148, y: 786.0145}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &719739662
 GameObject:
   m_ObjectHideFlags: 0
@@ -1930,18 +2176,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1369021896}
-        m_TargetAssemblyTypeName: CharacterName, Assembly-CSharp
-        m_MethodName: ChangeText
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Female
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 740597338}
         m_TargetAssemblyTypeName: SelectedPlayerData, Assembly-CSharp
         m_MethodName: SelectLevel
@@ -1964,6 +2198,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1258971806}
+        m_TargetAssemblyTypeName: CharacterSelectionUISetup, Assembly-CSharp
+        m_MethodName: SelectCharacter
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Farmer_Female
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &719739666
@@ -2066,6 +2312,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animation: 2
+--- !u!114 &936916582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 936916578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf23f57fd7573f04db33a41c1393c172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _skin:
+    Name: Hotdog
+    NameForPlaceholder: Hotdog
+    IsUnlocked: 0
+    Cost: 0
+    UnlockingRequirement: 20
 --- !u!1 &958794641
 GameObject:
   m_ObjectHideFlags: 0
@@ -2153,7 +2417,7 @@ GameObject:
   - component: {fileID: 1043305523}
   - component: {fileID: 1043305522}
   m_Layer: 5
-  m_Name: Character
+  m_Name: Paramedic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2253,7 +2517,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -671, y: -297}
+  m_AnchoredPosition: {x: -671, y: -271}
   m_SizeDelta: {x: 400, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1052025505
@@ -2300,6 +2564,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1258971806}
+        m_TargetAssemblyTypeName: CharacterSelectionUISetup, Assembly-CSharp
+        m_MethodName: UpdateSkins
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1052025508}
         m_TargetAssemblyTypeName: PlayButton, Assembly-CSharp
         m_MethodName: Play
@@ -2401,7 +2677,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 436, y: 30}
+  m_AnchoredPosition: {x: 436, y: -6}
   m_SizeDelta: {x: 108, y: 94}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1070343643
@@ -2473,18 +2749,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1369021896}
-        m_TargetAssemblyTypeName: CharacterName, Assembly-CSharp
-        m_MethodName: ChangeText
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Mary
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 740597338}
         m_TargetAssemblyTypeName: SelectedPlayerData, Assembly-CSharp
         m_MethodName: SelectLevel
@@ -2507,6 +2771,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1258971806}
+        m_TargetAssemblyTypeName: CharacterSelectionUISetup, Assembly-CSharp
+        m_MethodName: SelectCharacter
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: SummerGirl
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1070343645
@@ -2586,7 +2862,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 442, y: -220}
+  m_AnchoredPosition: {x: 442, y: -305}
   m_SizeDelta: {x: 108, y: 94}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1099518956
@@ -2658,18 +2934,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1369021896}
-        m_TargetAssemblyTypeName: CharacterName, Assembly-CSharp
-        m_MethodName: ChangeText
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Hot-Dog?
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 740597338}
         m_TargetAssemblyTypeName: SelectedPlayerData, Assembly-CSharp
         m_MethodName: SelectLevel
@@ -2692,6 +2956,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1258971806}
+        m_TargetAssemblyTypeName: CharacterSelectionUISetup, Assembly-CSharp
+        m_MethodName: SelectCharacter
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Hotdog
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1099518958
@@ -2771,7 +3047,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -150, y: 40}
+  m_AnchoredPosition: {x: -150, y: 4}
   m_SizeDelta: {x: 108, y: 94}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1104857917
@@ -2843,18 +3119,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1369021896}
-        m_TargetAssemblyTypeName: CharacterName, Assembly-CSharp
-        m_MethodName: ChangeText
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Jack
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 740597338}
         m_TargetAssemblyTypeName: SelectedPlayerData, Assembly-CSharp
         m_MethodName: SelectLevel
@@ -2877,6 +3141,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1258971806}
+        m_TargetAssemblyTypeName: CharacterSelectionUISetup, Assembly-CSharp
+        m_MethodName: SelectCharacter
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Jock
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1104857919
@@ -2929,7 +3205,7 @@ GameObject:
   - component: {fileID: 1115736245}
   - component: {fileID: 1115736244}
   m_Layer: 5
-  m_Name: Character
+  m_Name: Farmer_Female
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3010,6 +3286,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animation: 1
+--- !u!114 &1116367415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1116367411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf23f57fd7573f04db33a41c1393c172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _skin:
+    Name: Scarecrow
+    NameForPlaceholder: Scarecrow
+    IsUnlocked: 0
+    Cost: 0.99
+    UnlockingRequirement: 0
 --- !u!1 &1143672767 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3625915018901410663, guid: c230bbfa4289c094f94207825b23a381, type: 3}
@@ -3028,6 +3322,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animation: 0
+--- !u!114 &1143672771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1143672767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf23f57fd7573f04db33a41c1393c172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _skin:
+    Name: Paramedic
+    NameForPlaceholder: Paramedic
+    IsUnlocked: 0
+    Cost: 0.99
+    UnlockingRequirement: 0
 --- !u!1 &1148653792
 GameObject:
   m_ObjectHideFlags: 0
@@ -3040,7 +3352,7 @@ GameObject:
   - component: {fileID: 1148653795}
   - component: {fileID: 1148653794}
   m_Layer: 5
-  m_Name: Character
+  m_Name: Scarecrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3120,7 +3432,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cf84a76bf499904fa7b622eb431783c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _animation: 0
+  _animation: 5
+--- !u!114 &1157352507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1157352503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf23f57fd7573f04db33a41c1393c172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _skin:
+    Name: FarmBoy
+    NameForPlaceholder: Farm Boy
+    IsUnlocked: 1
+    Cost: 0
+    UnlockingRequirement: 5
 --- !u!1 &1182645856
 GameObject:
   m_ObjectHideFlags: 0
@@ -3307,18 +3637,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1369021896}
-        m_TargetAssemblyTypeName: CharacterName, Assembly-CSharp
-        m_MethodName: ChangeText
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Girl
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 740597338}
         m_TargetAssemblyTypeName: SelectedPlayerData, Assembly-CSharp
         m_MethodName: SelectLevel
@@ -3341,6 +3659,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1258971806}
+        m_TargetAssemblyTypeName: CharacterSelectionUISetup, Assembly-CSharp
+        m_MethodName: SelectCharacter
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: FarmGirl
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1204286717
@@ -3399,6 +3729,93 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animation: 3
+--- !u!114 &1224135338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1224135334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf23f57fd7573f04db33a41c1393c172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _skin:
+    Name: SummerGirl
+    NameForPlaceholder: Summer Girl
+    IsUnlocked: 0
+    Cost: 0.99
+    UnlockingRequirement: 0
+--- !u!1 &1258971805
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1258971807}
+  - component: {fileID: 1258971806}
+  m_Layer: 0
+  m_Name: CharacterSelectionUISetup
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1258971806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1258971805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c906963f58205f242a967086970061d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _descriptionText: {fileID: 596072991}
+  _characterNameText: {fileID: 1691499531}
+  _playButton: {fileID: 1052025505}
+  _skins:
+  - {fileID: 1157352507}
+  - {fileID: 1848814623}
+  - {fileID: 536810903}
+  - {fileID: 1370184211}
+  - {fileID: 523595146}
+  - {fileID: 1143672771}
+  - {fileID: 1224135338}
+  - {fileID: 1268804789}
+  - {fileID: 936916582}
+  - {fileID: 1116367415}
+  _grayedOutImages:
+  - {fileID: 2081487011}
+  - {fileID: 1646142366}
+  - {fileID: 1115736244}
+  - {fileID: 2141437175}
+  - {fileID: 1972774330}
+  - {fileID: 1043305522}
+  - {fileID: 499824203}
+  - {fileID: 1930538216}
+  - {fileID: 1421418902}
+  - {fileID: 1148653794}
+  _buttonsParent: {fileID: 2026857481}
+--- !u!4 &1258971807
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1258971805}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 726.4343, y: 695.0917, z: -25.995674}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1268804785 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3424050885438765198, guid: c230bbfa4289c094f94207825b23a381, type: 3}
@@ -3417,6 +3834,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animation: 2
+--- !u!114 &1268804789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1268804785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf23f57fd7573f04db33a41c1393c172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _skin:
+    Name: ShopKeeper
+    NameForPlaceholder: Shopkeeper
+    IsUnlocked: 0
+    Cost: 0
+    UnlockingRequirement: 15
 --- !u!1 &1326344962
 GameObject:
   m_ObjectHideFlags: 0
@@ -3531,7 +3966,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 737, y: -220}
+  m_AnchoredPosition: {x: 737, y: -305}
   m_SizeDelta: {x: 108, y: 94}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1327135629
@@ -3603,18 +4038,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1369021896}
-        m_TargetAssemblyTypeName: CharacterName, Assembly-CSharp
-        m_MethodName: ChangeText
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Scarecrow
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 740597338}
         m_TargetAssemblyTypeName: SelectedPlayerData, Assembly-CSharp
         m_MethodName: SelectLevel
@@ -3637,6 +4060,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1258971806}
+        m_TargetAssemblyTypeName: CharacterSelectionUISetup, Assembly-CSharp
+        m_MethodName: SelectCharacter
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Scarecrow
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1327135631
@@ -3782,13 +4217,13 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 2081312402}
+  - {fileID: 1691499530}
   m_Father: {fileID: 145122707}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -670, y: -140.65454}
+  m_AnchoredPosition: {x: -670, y: -95}
   m_SizeDelta: {x: 400, y: 119.3091}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1369021894
@@ -3804,7 +4239,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3841,7 +4276,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5f0c90eccd672e48b0ca9f6bc84171a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _nameText: {fileID: 2081312403}
+  _nameText: {fileID: 0}
 --- !u!1 &1370184207 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 217055025263876585, guid: c230bbfa4289c094f94207825b23a381, type: 3}
@@ -3860,6 +4295,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animation: 4
+--- !u!114 &1370184211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1370184207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf23f57fd7573f04db33a41c1393c172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _skin:
+    Name: Farmer_Male_Old
+    NameForPlaceholder: Farmer
+    IsUnlocked: 0
+    Cost: 0
+    UnlockingRequirement: 8
 --- !u!1 &1403594531
 GameObject:
   m_ObjectHideFlags: 0
@@ -3899,7 +4352,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 143, y: 40}
+  m_AnchoredPosition: {x: 143, y: 4}
   m_SizeDelta: {x: 108, y: 94}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1403594533
@@ -3971,18 +4424,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1369021896}
-        m_TargetAssemblyTypeName: CharacterName, Assembly-CSharp
-        m_MethodName: ChangeText
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Paramedic
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 740597338}
         m_TargetAssemblyTypeName: SelectedPlayerData, Assembly-CSharp
         m_MethodName: SelectLevel
@@ -4005,6 +4446,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1258971806}
+        m_TargetAssemblyTypeName: CharacterSelectionUISetup, Assembly-CSharp
+        m_MethodName: SelectCharacter
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Paramedic
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1403594535
@@ -4057,7 +4510,7 @@ GameObject:
   - component: {fileID: 1421418903}
   - component: {fileID: 1421418902}
   m_Layer: 5
-  m_Name: Character
+  m_Name: Hotdog
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4207,7 +4660,7 @@ GameObject:
   - component: {fileID: 1646142367}
   - component: {fileID: 1646142366}
   m_Layer: 5
-  m_Name: Character
+  m_Name: FarmGirl
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4269,6 +4722,140 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1646142364}
+  m_CullTransparentMesh: 1
+--- !u!1 &1691499529
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1691499530}
+  - component: {fileID: 1691499532}
+  - component: {fileID: 1691499531}
+  m_Layer: 5
+  m_Name: Text (TMP)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1691499530
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1691499529}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1369021893}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 1.2843018, y: -8.266998}
+  m_SizeDelta: {x: -36.1146, y: -36.7074}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1691499531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1691499529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: New Text
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 39c0d45e661292d49947df1e20c5fcd9, type: 2}
+  m_sharedMaterial: {fileID: -3381331009256049497, guid: 39c0d45e661292d49947df1e20c5fcd9, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 72
+  m_fontSizeBase: 36
+  m_fontWeight: 400
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &1691499532
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1691499529}
   m_CullTransparentMesh: 1
 --- !u!1 &1732916598
 GameObject:
@@ -4456,18 +5043,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1369021896}
-        m_TargetAssemblyTypeName: CharacterName, Assembly-CSharp
-        m_MethodName: ChangeText
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Boy
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 740597338}
         m_TargetAssemblyTypeName: SelectedPlayerData, Assembly-CSharp
         m_MethodName: SelectLevel
@@ -4490,6 +5065,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1258971806}
+        m_TargetAssemblyTypeName: CharacterSelectionUISetup, Assembly-CSharp
+        m_MethodName: SelectCharacter
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: FarmBoy
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1763501591
@@ -4535,6 +5122,24 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 216749360059636526, guid: c230bbfa4289c094f94207825b23a381, type: 3}
   m_PrefabInstance: {fileID: 2217226365758169928}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1848814623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1848814619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf23f57fd7573f04db33a41c1393c172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _skin:
+    Name: FarmGirl
+    NameForPlaceholder: Farm Girl
+    IsUnlocked: 1
+    Cost: 0
+    UnlockingRequirement: 0
 --- !u!114 &1848814625
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4548,6 +5153,96 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animation: 4
+--- !u!1 &1854020914
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1854020915}
+  - component: {fileID: 1854020918}
+  - component: {fileID: 1854020917}
+  - component: {fileID: 1854020916}
+  m_Layer: 5
+  m_Name: Description
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1854020915
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1854020914}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 596072989}
+  m_Father: {fileID: 145122707}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 2.8527, y: -270.70526}
+  m_SizeDelta: {x: 551.1287, y: 235.6822}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1854020916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1854020914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5f0c90eccd672e48b0ca9f6bc84171a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _nameText: {fileID: 0}
+--- !u!114 &1854020917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1854020914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300022, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1854020918
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1854020914}
+  m_CullTransparentMesh: 1
 --- !u!1 &1869244499
 GameObject:
   m_ObjectHideFlags: 0
@@ -4878,7 +5573,7 @@ GameObject:
   - component: {fileID: 1930538217}
   - component: {fileID: 1930538216}
   m_Layer: 5
-  m_Name: Character
+  m_Name: ShopKeeper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4953,7 +5648,7 @@ GameObject:
   - component: {fileID: 1972774331}
   - component: {fileID: 1972774330}
   m_Layer: 5
-  m_Name: Character
+  m_Name: Jock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5058,88 +5753,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 30}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &2081312401
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2081312402}
-  - component: {fileID: 2081312404}
-  - component: {fileID: 2081312403}
-  m_Layer: 5
-  m_Name: Text
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &2081312402
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2081312401}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1369021893}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 400, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2081312403
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2081312401}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_FontData:
-    m_Font: {fileID: 12800000, guid: 1b076870de6a5aa4c97104940d7fde32, type: 3}
-    m_FontSize: 36
-    m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 0
-    m_MaxSize: 52
-    m_Alignment: 4
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: Character
---- !u!222 &2081312404
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2081312401}
-  m_CullTransparentMesh: 1
 --- !u!1 &2081487009
 GameObject:
   m_ObjectHideFlags: 0
@@ -5152,7 +5768,7 @@ GameObject:
   - component: {fileID: 2081487012}
   - component: {fileID: 2081487011}
   m_Layer: 5
-  m_Name: Character
+  m_Name: FarmBoy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5227,7 +5843,7 @@ GameObject:
   - component: {fileID: 2141437176}
   - component: {fileID: 2141437175}
   m_Layer: 5
-  m_Name: Character
+  m_Name: Farmer_Male_Old
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5303,7 +5919,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 216765147657869779, guid: c230bbfa4289c094f94207825b23a381, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 217055025263876585, guid: c230bbfa4289c094f94207825b23a381, type: 3}
       propertyPath: m_IsActive
@@ -5331,7 +5947,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 218399895355626974, guid: c230bbfa4289c094f94207825b23a381, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.82
+      value: 0.98
       objectReference: {fileID: 0}
     - target: {fileID: 218399895355626974, guid: c230bbfa4289c094f94207825b23a381, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5407,7 +6023,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3424050885438765198, guid: c230bbfa4289c094f94207825b23a381, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3424050885439232968, guid: c230bbfa4289c094f94207825b23a381, type: 3}
       propertyPath: m_LocalPosition.y

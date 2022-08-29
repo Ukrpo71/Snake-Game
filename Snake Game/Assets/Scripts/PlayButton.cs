@@ -7,6 +7,8 @@ public class PlayButton : MonoBehaviour
 {
     public void Play()
     {
-        SceneManager.LoadScene(1);
+        DataPersist dataPersist = FindObjectOfType<DataPersist>();
+        dataPersist.Save();
+        SceneManager.LoadScene("HomeScreen");
     }
 }

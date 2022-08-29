@@ -20,6 +20,15 @@ public class Spawner : MonoBehaviour
         
     }
 
+    public void SpawnAwayFrom(AnimalType typeToSpawn,int amount)
+    {
+        
+        for (int i = 0; i < amount; i++)
+        {
+            Instantiate(_spawnPrefab, GenerateRandomSpawnPositionAwayFrom(Vector3.zero), Quaternion.identity);
+        }
+    }
+
     public void SpawnAwayFrom(int amount, Vector3 awayFrom)
     {
         Debug.Log("Spawn Away");
