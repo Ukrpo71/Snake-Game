@@ -90,7 +90,11 @@ public class PlayerController : MonoBehaviour
 
     private void GatherInput()
     {
-        _input = new Vector3(_joystick.Horizontal, 0, _joystick.Vertical).normalized;
+        // For Joystick Input
+        //_input = new Vector3(_joystick.Horizontal, 0, _joystick.Vertical).normalized;
+
+        // For D-Pad
+        _input = new Vector3(SimpleInput.GetAxis("Horizontal"), 0, SimpleInput.GetAxis("Vertical")).normalized;
 
         if (_input == Vector3.zero)
             _input = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
