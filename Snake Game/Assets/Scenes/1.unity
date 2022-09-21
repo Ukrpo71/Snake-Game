@@ -27748,7 +27748,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1641828831068168, guid: fc57d97f3d02d954fb2ef7f56d585ce3, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224254916538100272, guid: fc57d97f3d02d954fb2ef7f56d585ce3, type: 3}
       propertyPath: m_Pivot.x
@@ -33084,11 +33084,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d971da22a4fc7a42908f1f843c0189e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _levelScoreGoal: 50
+  _levelScoreGoal: 100
   _timeToBeat: 100
-  _jumpTreshold: 0
-  _jumpOverObstaclesGoal: 0
-  _jumpOverSelfGoal: 0
+  _jumpTreshold: 30
+  _jumpOverObstaclesGoal: 3
+  _jumpOverSelfGoal: 1
 --- !u!4 &1256398397 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 408904, guid: 4cc487e002327cb43995ca1871bd142e, type: 3}
@@ -44449,7 +44449,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3881087803549984437, guid: ec536a7718376554185e4a856d5ae230, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3881087804030458057, guid: ec536a7718376554185e4a856d5ae230, type: 3}
       propertyPath: m_Sprite

@@ -170,6 +170,7 @@ public class GameManager : MonoBehaviour
 
     private void Init()
     {
+        UpdateGoalTexts();
         var amountToSpawn = Random.Range(_minTreshold, _maxAmountOfFood);
         _spawner.SpawnAwayFrom(amountToSpawn, new Vector3(0,0,0));
         _numberOfFoodOnTheField = amountToSpawn;
@@ -239,6 +240,22 @@ public class GameManager : MonoBehaviour
 
     }
 
+    public void UpdateGoalTexts()
+    {
+        if (_levelGoals.JumpTreshold == 0)
+        {
+            if (_jumpsOverObstaclesPanel.activeInHierarchy)
+            {
+                _jumpsOverObstaclesPanel.GetComponent<CanvasGroup>().alpha = 1;
+
+            }
+            if (_jumpsOverYourselfPanel.activeInHierarchy)
+            {
+                _jumpsOverYourselfPanel.GetComponent<CanvasGroup>().alpha = 1;
+            }
+        }
+    }
+
     public void PlayerJumpedOver(bool jumpedOverObstacle)
     {
         if (_levelGoals.JumpTreshold <= _score)
@@ -250,9 +267,13 @@ public class GameManager : MonoBehaviour
 
             UpdateScore();
 
-            if (IsGoalReached())
-                ChangeState(GameState.GameWon);
         }
+    }
+
+    public void TryToFinishGame()
+    {
+        if (IsGoalReached())
+            ChangeState(GameState.GameWon);
     }
 
     private bool IsGoalReached()

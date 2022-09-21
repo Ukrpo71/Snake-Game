@@ -91,10 +91,10 @@ public class PlayerController : MonoBehaviour
     private void GatherInput()
     {
         // For Joystick Input
-        //_input = new Vector3(_joystick.Horizontal, 0, _joystick.Vertical).normalized;
+        _input = new Vector3(_joystick.Horizontal, 0, _joystick.Vertical).normalized;
 
         // For D-Pad
-        _input = new Vector3(SimpleInput.GetAxis("Horizontal"), 0, SimpleInput.GetAxis("Vertical")).normalized;
+        //_input = new Vector3(SimpleInput.GetAxis("Horizontal"), 0, SimpleInput.GetAxis("Vertical")).normalized;
 
         if (_input == Vector3.zero)
             _input = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
@@ -163,7 +163,7 @@ public class PlayerController : MonoBehaviour
                 var relative = (transform.position + skewedInput) - transform.position;
                 Quaternion rotation = Quaternion.LookRotation(relative, Vector3.up);
 
-                transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, 45);
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, 60);
 
                 _isRotating = true;
             }
@@ -193,6 +193,11 @@ public class PlayerController : MonoBehaviour
             _lastTimeJumped = Time.time;
             _gameManager.PlayerJumpedOver(false);
         }
+    }
+
+    public void LandedJump()
+    {
+        _gameManager.TryToFinishGame();
     }
 
     public void Grow()

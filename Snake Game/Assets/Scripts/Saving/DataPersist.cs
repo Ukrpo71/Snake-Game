@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using UnityEngine;
+using CloudOnce;
 
 public class DataPersist : MonoBehaviour
 {
@@ -33,6 +34,7 @@ public class DataPersist : MonoBehaviour
         UpdateSkins();
         string json = JsonUtility.ToJson(PlayerData);
         File.WriteAllText(_path, json);
+        CloudVariables.savedGameData = json;
     }
 
     public void Load()
@@ -40,6 +42,11 @@ public class DataPersist : MonoBehaviour
         if (File.Exists(_path))
         {
             string json = File.ReadAllText(_path);
+            PlayerData = JsonUtility.FromJson<PlayerData>(json);
+        }
+        else if (CloudVariables.savedGameData != null)
+        {
+            string json = CloudVariables.savedGameData;
             PlayerData = JsonUtility.FromJson<PlayerData>(json);
         }
         else

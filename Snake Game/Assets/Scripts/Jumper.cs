@@ -61,6 +61,7 @@ public class Jumper : MonoBehaviour
             _isJumping = false;
             _isInTheAir = false;
             _rb.velocity = new Vector3(0,0,0);
+            GetComponent<PlayerController>().LandedJump();
         }
     }
 
