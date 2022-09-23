@@ -10,6 +10,9 @@ public class WaitingText : MonoBehaviour
     void Update()
     {
         if (Input.GetMouseButtonUp(0))
+        {
+            SoundManager.Instance.PlayStartLevelSound();
             _event.Invoke();
+        }
     }
 }

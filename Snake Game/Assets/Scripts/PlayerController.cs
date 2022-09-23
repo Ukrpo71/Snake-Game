@@ -38,6 +38,9 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private UnityEvent _playerLost;
 
+    [SerializeField] private AudioClip _pickUpSound;
+    [SerializeField] private AudioClip _jumpSound;
+    [SerializeField] private AudioClip _loseSound;
     public void PlayerLost()
     {
         _playerLost.Invoke();
@@ -107,6 +110,7 @@ public class PlayerController : MonoBehaviour
 
     public void SpawnJumpTrigger()
     {
+        SoundManager.Instance.PlayAudio(_jumpSound);
         Instantiate(_jumpTriggerPrefab, transform.position, Quaternion.identity);
     }
 
@@ -215,6 +219,8 @@ public class PlayerController : MonoBehaviour
 
             _bodyParts.Add(body);
         }
+
+        SoundManager.Instance.PlayAudio(_pickUpSound);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -225,6 +231,8 @@ public class PlayerController : MonoBehaviour
             _gameManager.GameOver = true;
 
             PlayerLost();
+
+            SoundManager.Instance.PlayAudio(_loseSound);
         }
     }
 

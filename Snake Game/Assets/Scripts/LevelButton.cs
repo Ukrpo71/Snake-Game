@@ -30,6 +30,7 @@ public class LevelButton : MonoBehaviour
 
         GetComponentInChildren<TextMeshProUGUI>().text = _levelIndex.ToString();
         GetComponent<Button>().onClick.AddListener(LoadLevel);
+        GetComponent<Button>().onClick.AddListener(SoundManager.Instance.PlayUIAudio);
     }
 
     private void LoadLevel()
