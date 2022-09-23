@@ -282,6 +282,10 @@ public class GameManager : MonoBehaviour
             _timesJumpedOverObstacles >= _levelGoals.JumpsOverObstacles 
             && _timesJumpedOverSelf >= _levelGoals.JumpsOverYourself);
     }
+    public void FinishTutorial()
+    {
+        PlayerPrefs.SetInt("TutorialFinished", 1);
+    }
 
     private void UpdateBonusTime()
     {

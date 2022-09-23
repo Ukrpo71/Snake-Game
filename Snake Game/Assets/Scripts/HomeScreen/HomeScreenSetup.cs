@@ -7,10 +7,16 @@ public class HomeScreenSetup : MonoBehaviour
 {
     [SerializeField] private Spawner _spawner;
     [SerializeField] private TMP_Text _chickenText;
+    [SerializeField] private SceneLoader _sceneLoader;
 
     private void Start()
     {
         DataPersist dataPersist = FindObjectOfType<DataPersist>();
+
+        if (PlayerPrefs.GetInt("TutorialFinished") == 0)
+        {
+            _sceneLoader.LoadScene("Tutorial");
+        }
 
         foreach(var animal in dataPersist.PlayerData.Animals)
         {

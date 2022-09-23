@@ -44,11 +44,12 @@ public class DataPersist : MonoBehaviour
             string json = File.ReadAllText(_path);
             PlayerData = JsonUtility.FromJson<PlayerData>(json);
         }
-        else if (CloudVariables.savedGameData != null)
+        else if (CloudVariables.savedGameData != "")
         {
             string json = CloudVariables.savedGameData;
             PlayerData = JsonUtility.FromJson<PlayerData>(json);
         }
+        
         else
         {
             PlayerData = FindObjectOfType<InitialDataPersist>().PlayerData;
