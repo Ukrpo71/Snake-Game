@@ -12,9 +12,9 @@
 	],
 	"AppleSupported":false,
 	"GoogleSupported":true,
-	"GoogleAppID":"376299396566",
+	"GoogleAppID":"965036042384",
 	"GoogleSetupRun":true,
-	"DebugModeEnabled":false,
+	"DebugModeEnabled":true,
 	"Version":"2.7.5",
 	"SettingsLocation":"0"
 }

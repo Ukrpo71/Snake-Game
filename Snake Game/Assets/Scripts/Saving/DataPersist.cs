@@ -24,7 +24,9 @@ public class DataPersist : MonoBehaviour
 
         DontDestroyOnLoad(this);
         _path = Application.persistentDataPath + Path.AltDirectorySeparatorChar + "save.json";
+        CloudOnce.Cloud.SignIn();
         Load();
+
     }
 
 

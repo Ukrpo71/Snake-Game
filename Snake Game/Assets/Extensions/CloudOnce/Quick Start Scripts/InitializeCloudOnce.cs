@@ -5,6 +5,7 @@
 
 namespace CloudOnce.QuickStart
 {
+    using System;
     using UnityEngine;
 
     /// <summary>
@@ -22,8 +23,20 @@ namespace CloudOnce.QuickStart
         [SerializeField]
         private bool autoCloudLoad = true;
 
-        private void Start()
+        private void Awake()
         {
+            Cloud.OnInitializeComplete += CloudOnceInitializeComplete;
+        }
+
+        private void CloudOnceInitializeComplete()
+        {
+            Cloud.OnInitializeComplete -= CloudOnceInitializeComplete;
+
+            
+        }
+
+        private void Start()
+        {   
             Cloud.Initialize(cloudSaveEnabled, autoSignIn, autoCloudLoad);
         }
     }
