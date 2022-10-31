@@ -6,6 +6,7 @@
 namespace CloudOnce.QuickStart
 {
     using System;
+    using System.Collections.Generic;
     using UnityEngine;
 
     /// <summary>
@@ -32,7 +33,6 @@ namespace CloudOnce.QuickStart
         {
             Cloud.OnInitializeComplete -= CloudOnceInitializeComplete;
 
-            
         }
 
         private void Start()

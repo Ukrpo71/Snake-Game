@@ -24,7 +24,6 @@ public class DataPersist : MonoBehaviour
 
         DontDestroyOnLoad(this);
         _path = Application.persistentDataPath + Path.AltDirectorySeparatorChar + "save.json";
-        CloudOnce.Cloud.SignIn();
         Load();
 
     }
@@ -36,8 +35,24 @@ public class DataPersist : MonoBehaviour
         UpdateSkins();
         string json = JsonUtility.ToJson(PlayerData);
         File.WriteAllText(_path, json);
-        CloudVariables.savedGameData = json;
+        Debug.Log("json: " + json);
+        Debug.Log("Encoded json: " + Base64Encode(json));
+        CloudVariables.savedGameData = Base64Encode(json);
+        Cloud.Storage.Save();
     }
+
+    public static string Base64Encode(string plainText)
+    {
+        var plainTextBytes = System.Text.Encoding.UTF8.GetBytes(plainText);
+        return System.Convert.ToBase64String(plainTextBytes);
+    }
+
+    public static string Base64Decode(string base64EncodedData)
+    {
+        var base64EncodedBytes = System.Convert.FromBase64String(base64EncodedData);
+        return System.Text.Encoding.UTF8.GetString(base64EncodedBytes);
+    }
+
 
     public void Load()
     {
@@ -49,7 +64,8 @@ public class DataPersist : MonoBehaviour
         else if (CloudVariables.savedGameData != "")
         {
             string json = CloudVariables.savedGameData;
-            PlayerData = JsonUtility.FromJson<PlayerData>(json);
+            Debug.Log("savedGameData: " + Base64Decode(json));
+            PlayerData = JsonUtility.FromJson<PlayerData>(Base64Decode(json));
         }
         
         else
