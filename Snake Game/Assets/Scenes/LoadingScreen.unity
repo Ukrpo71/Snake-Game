@@ -3504,7 +3504,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54862f59673755642be42457923cc0c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cloudOnceEvent: 0
+  cloudOnceEvent: 1
 --- !u!4 &486163922 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 408904, guid: 4cc487e002327cb43995ca1871bd142e, type: 3}
@@ -7691,13 +7691,6 @@ MonoBehaviour:
   cloudSaveEnabled: 1
   autoSignIn: 1
   autoCloudLoad: 1
-  objectsToLoad:
-  - {fileID: 0}
-  - {fileID: 1330100520}
-  - {fileID: 33361375}
-  - {fileID: 2144489873753605996}
-  - {fileID: 730657488}
-  - {fileID: 1122473058}
 --- !u!4 &1285212896
 Transform:
   m_ObjectHideFlags: 0
@@ -7724,7 +7717,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f71005778720c3546826fd5599bb4b4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cloudOnceEvent: 0
+  cloudOnceEvent: 1
   sceneName: HomeScreen
   loadAdditive: 0
   loadAsync: 0

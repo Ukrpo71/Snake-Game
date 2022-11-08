@@ -32,7 +32,6 @@ namespace CloudOnce.QuickStart
         private void CloudOnceInitializeComplete()
         {
             Cloud.OnInitializeComplete -= CloudOnceInitializeComplete;
-
         }
 
         private void Start()

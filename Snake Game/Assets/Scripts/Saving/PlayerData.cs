@@ -10,7 +10,8 @@ public class PlayerData
     public List<SkinData> Skins;
     public List<Animal> Animals;
     public List<Level> Levels;
-
+    public bool TutorialFinished = false;
+    public bool HomeScreenExplained = false;
 
     public PlayerData() { }
     public PlayerData(List<SkinData> unlockedLevels, int selectedSkin)

@@ -63,6 +63,7 @@ public class DataPersist : MonoBehaviour
         }
         else if (CloudVariables.savedGameData != "")
         {
+
             string json = CloudVariables.savedGameData;
             Debug.Log("savedGameData: " + Base64Decode(json));
             PlayerData = JsonUtility.FromJson<PlayerData>(Base64Decode(json));

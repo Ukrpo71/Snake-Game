@@ -284,7 +284,8 @@ public class GameManager : MonoBehaviour
     }
     public void FinishTutorial()
     {
-        PlayerPrefs.SetInt("TutorialFinished", 1);
+        
+        //PlayerPrefs.SetInt("TutorialFinished", 1);
     }
 
     private void UpdateBonusTime()

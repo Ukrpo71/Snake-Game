@@ -13,7 +13,7 @@ public class HomeScreenSetup : MonoBehaviour
     {
         DataPersist dataPersist = FindObjectOfType<DataPersist>();
 
-        if (PlayerPrefs.GetInt("TutorialFinished") == 0)
+        if (dataPersist.PlayerData.TutorialFinished == false)
         {
             _sceneLoader.LoadScene("Tutorial");
         }
