@@ -117,6 +117,7 @@ public class GameManager : MonoBehaviour
             case (GameState.Playing):
                 break;
             case (GameState.GameWon):
+                InterstitialAd.Instance.NumberOfTimesPlayed++;
                 ShowGameWonPanel();
                 break;
             case (GameState.GameLost):

@@ -229,6 +229,7 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Body") || collision.gameObject.CompareTag("Wall"))
         {
             _gameManager.GameOver = true;
+            InterstitialAd.Instance.NumberOfTimesPlayed++;
 
             PlayerLost();
 

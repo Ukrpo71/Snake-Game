@@ -12,6 +12,7 @@ public class PlayerData
     public List<Level> Levels;
     public bool TutorialFinished = false;
     public bool HomeScreenExplained = false;
+    public bool NoAds = false;
 
     public PlayerData() { }
     public PlayerData(List<SkinData> unlockedLevels, int selectedSkin)

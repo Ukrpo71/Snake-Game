@@ -48,7 +48,9 @@ public class InApps : MonoBehaviour, IStoreListener
 
     public void DisableAds()
     {
-
+        FindObjectOfType<DataPersist>().PlayerData.NoAds = true;
+        InterstitialAd.Instance.StopAllAds();
+        FindObjectOfType<DataPersist>().Save();
     }
 
     private void Start()
