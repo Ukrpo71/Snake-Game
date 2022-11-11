@@ -29,6 +29,7 @@ public class CharacterSelectionUISetup : MonoBehaviour
 
     public void UpdateSkinsData()
     {
+        _dataPersist = null;
         _dataPersist = FindObjectOfType<DataPersist>();
         _skinsData.Clear();
         foreach (var skin in _dataPersist.PlayerData.Skins)
@@ -42,9 +43,11 @@ public class CharacterSelectionUISetup : MonoBehaviour
         foreach(var image in _grayedOutImages)
         {
             SkinData associatedSkin = _dataPersist.PlayerData.Skins.FirstOrDefault(i => i.Name == image.gameObject.name);
+            Debug.Log(associatedSkin.Name + " " + associatedSkin.IsUnlocked);
             image.color = associatedSkin.IsUnlocked ? Color.white : Color.gray;
         }
     }
+
 
     private void LoadData()
     {

@@ -11,6 +11,8 @@ public class InApps : MonoBehaviour, IStoreListener
 {
     [SerializeField] private Button _purchaseButton;
 
+    [SerializeField] private CharacterSelectionUISetup _characterSelection;
+
     private static IStoreController m_StoreController;
     IGooglePlayStoreExtensions m_GooglePlayStoreExtensions;
 
@@ -21,9 +23,6 @@ public class InApps : MonoBehaviour, IStoreListener
 
     [SerializeField] private IAPButton button = new IAPButton();
 
-    public class OnPurchaseCompletedEvent : UnityEvent<Product>
-    {
-    };
 
     public void ChangePurchaseButtonID(string id)
     {
@@ -42,8 +41,9 @@ public class InApps : MonoBehaviour, IStoreListener
     public void UnlockSkin(Product product)
     {
         DataPersist dataPersist = FindObjectOfType<DataPersist>();
-        dataPersist.PlayerData.Skins.First(s => s.Name == product.definition.id).IsUnlocked = true;
+        dataPersist.PlayerData.Skins.First(s => s.Name.ToLower() == product.definition.id.ToLower()).IsUnlocked = true;
         dataPersist.Save();
+        _characterSelection.SetupSkinBackground();
     }
 
     public void DisableAds()

@@ -2044,6 +2044,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _purchaseButton: {fileID: 2099134851}
+  _characterSelection: {fileID: 1258971806}
   button: {fileID: 1787206694}
 --- !u!4 &575785752
 Transform:
@@ -2775,18 +2776,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1258971806}
-        m_TargetAssemblyTypeName: CharacterSelectionUISetup, Assembly-CSharp
-        m_MethodName: UpdateSkins
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1052025508}
         m_TargetAssemblyTypeName: PlayButton, Assembly-CSharp
         m_MethodName: Play
@@ -5823,18 +5812,6 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: InApps, Assembly-CSharp
         m_MethodName: UnlockSkin
         m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1258971806}
-        m_TargetAssemblyTypeName: CharacterSelectionUISetup, Assembly-CSharp
-        m_MethodName: SetupSkinBackground
-        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
