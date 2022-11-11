@@ -34,8 +34,7 @@ public class InApps : MonoBehaviour, IStoreListener
     public void ChangeIAPButtonID(string id)
     {
         button.productId = id;
-        button.GetComponentInChildren<TextMeshProUGUI>().text = "$" + m_StoreController.products.all.FirstOrDefault(p =>
-                                                                                                  p.definition.id == id).metadata.localizedPrice;
+        button.GetComponentInChildren<TextMeshProUGUI>().text = m_StoreController.products.all.FirstOrDefault(p => p.definition.id.ToLower() == id).metadata.localizedPriceString;
     }
 
     public void UnlockSkin(Product product)
