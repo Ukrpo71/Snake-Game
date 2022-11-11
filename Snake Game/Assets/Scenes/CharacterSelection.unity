@@ -3007,7 +3007,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: SummerGirl
+          m_StringArgument: summergirl
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1070343645
@@ -4318,7 +4318,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Scarecrow
+          m_StringArgument: scarecrow
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1327135631
@@ -4719,7 +4719,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Paramedic
+          m_StringArgument: paramedic
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1403594535
@@ -4970,7 +4970,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36a5f511b0d8142cba0aeb92d0b264c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  productId: NoAds
+  productId: noads
   buttonType: 0
   consumePurchase: 1
   onPurchaseComplete:
@@ -5813,7 +5813,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36a5f511b0d8142cba0aeb92d0b264c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  productId: Paramedic
+  productId: paramedic
   buttonType: 0
   consumePurchase: 1
   onPurchaseComplete:

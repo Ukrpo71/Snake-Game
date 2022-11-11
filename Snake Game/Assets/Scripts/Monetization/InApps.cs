@@ -35,14 +35,18 @@ public class InApps : MonoBehaviour, IStoreListener
     public void ChangeIAPButtonID(string id)
     {
         button.productId = id;
-        button.GetComponentInChildren<TextMeshProUGUI>().text = "$" + m_StoreController.products.all.FirstOrDefault(p =>
-                                                                                                  p.definition.id == id).metadata.localizedPrice;
+        foreach (var product in m_StoreController.products.all)
+            Debug.Log(product.definition.id + " | " + product.metadata.localizedPriceString);
+        button.GetComponentInChildren<TextMeshProUGUI>().text = m_StoreController.products.all.FirstOrDefault(p =>
+                                                                         p.definition.id.ToLower() == id).metadata.localizedPriceString;
     }
 
     public void UnlockSkin(Product product)
     {
         DataPersist dataPersist = FindObjectOfType<DataPersist>();
-        dataPersist.PlayerData.Skins.First(s => s.Name == product.definition.id).IsUnlocked = true;
+        foreach (var skin in dataPersist.PlayerData.Skins)
+            Debug.Log(skin.Name.ToLower());
+        dataPersist.PlayerData.Skins.First(s => s.Name.ToLower() == product.definition.id.ToLower()).IsUnlocked = true;
         dataPersist.Save();
     }
 
