@@ -16,10 +16,10 @@ public class InApps : MonoBehaviour, IStoreListener
     private static IStoreController m_StoreController;
     IGooglePlayStoreExtensions m_GooglePlayStoreExtensions;
 
-    public static string Paramedic = "Paramedic";
-    public static string Scarecrow = "Scarecrow";
-    public static string SummerGirl = "SummerGirl";
-    public static string NoAds = "NoAds";
+    public static string Paramedic = "paramedic";
+    public static string Scarecrow = "scarecrow";
+    public static string SummerGirl = "summergirl";
+    public static string NoAds = "noads";
 
     [SerializeField] private IAPButton button = new IAPButton();
 
@@ -34,13 +34,18 @@ public class InApps : MonoBehaviour, IStoreListener
     public void ChangeIAPButtonID(string id)
     {
         button.productId = id;
-        button.GetComponentInChildren<TextMeshProUGUI>().text = m_StoreController.products.all.FirstOrDefault(p => p.definition.id.ToLower() == id).metadata.localizedPriceString;
+        TextMeshProUGUI buttonText = button.GetComponentInChildren<TextMeshProUGUI>();
+        if (buttonText != null)
+            buttonText.text = m_StoreController.products.all.FirstOrDefault(p => p.definition.id.ToLower() == id).metadata.localizedPriceString;
     }
 
     public void UnlockSkin(Product product)
     {
         DataPersist dataPersist = FindObjectOfType<DataPersist>();
+        Debug.Log("Trying to unlock " + product.definition.id);
+        Debug.Log(dataPersist.PlayerData.Skins.First(s => s.Name.ToLower() == product.definition.id.ToLower()).IsUnlocked);
         dataPersist.PlayerData.Skins.First(s => s.Name.ToLower() == product.definition.id.ToLower()).IsUnlocked = true;
+        Debug.Log(dataPersist.PlayerData.Skins.First(s => s.Name.ToLower() == product.definition.id.ToLower()).IsUnlocked);
         dataPersist.Save();
         _characterSelection.SetupSkinBackground();
     }
