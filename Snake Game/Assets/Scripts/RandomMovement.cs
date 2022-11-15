@@ -14,9 +14,7 @@ public class RandomMovement : MonoBehaviour
     void Start()
     {
         _agent = GetComponent<NavMeshAgent>();
-
         _agent.SetDestination(FindNextTarget());
-
     }
 
     void Update()
@@ -40,14 +38,17 @@ public class RandomMovement : MonoBehaviour
         {
             if (hitInfo.collider.CompareTag("Wall") || hitInfo.collider.CompareTag("Obstacle"))
             {
+                Debug.Log("hit a wall");
                 return FindNextTarget();
             }
             else
             {
+                Debug.Log("Hit something else");
                 return randomVector;
             }
 
         }
+        Debug.Log("Didn't hit anything");
         return randomVector;
     }
 }

@@ -33009,7 +33009,7 @@ MonoBehaviour:
   _jumpsOverYourselfText: {fileID: 627550389}
   _timeToBeatText: {fileID: 9397463}
   _bonusText: {fileID: 854631333}
-  _maxAmountOfFood: 12
+  _maxAmountOfFood: 10
   _minTreshold: 2
 --- !u!4 &1256289563
 Transform:
@@ -36023,6 +36023,51 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4cc487e002327cb43995ca1871bd142e, type: 3}
+--- !u!1 &1385915095
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1385915096}
+  - component: {fileID: 1385915097}
+  m_Layer: 0
+  m_Name: Lower Bound
+  m_TagString: Wall
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1385915096
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1385915095}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2027652026}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1385915097
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1385915095}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 35, y: 1, z: 35}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1394134397 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7486114120955855211, guid: bb57c1e01794ba34cb07e4798e196cf8, type: 3}
@@ -52882,6 +52927,7 @@ Transform:
   - {fileID: 198614741}
   - {fileID: 741130171}
   - {fileID: 1044338584}
+  - {fileID: 1385915096}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

@@ -11,8 +11,10 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioClip _backSound;
     [SerializeField] private AudioClip _UISound;
     [SerializeField] private AudioClip _startLevelSound;
+    [SerializeField] private AudioClip _loseSound;
 
     public static SoundManager Instance;
+
 
     private void Awake()
     {
@@ -44,5 +46,10 @@ public class SoundManager : MonoBehaviour
     public void PlayStartLevelSound()
     {
         _audioSource.PlayOneShot(_startLevelSound);
+    }
+
+    public void PlayLoseSound()
+    {
+        _audioSource.PlayOneShot(_loseSound);
     }
 }

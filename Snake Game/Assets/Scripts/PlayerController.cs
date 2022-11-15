@@ -230,10 +230,10 @@ public class PlayerController : MonoBehaviour
         {
             _gameManager.GameOver = true;
             InterstitialAd.Instance.NumberOfTimesPlayed++;
-
+            SoundManager.Instance.PlayLoseSound();
             PlayerLost();
 
-            SoundManager.Instance.PlayAudio(_loseSound);
+            
         }
     }
 

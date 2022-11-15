@@ -68,6 +68,8 @@ public class Jumper : MonoBehaviour
 
     private void Jump()
     {
+        if (gameObject.CompareTag("Body"))
+            transform.GetComponentInChildren<BoxCollider>().isTrigger = false;
         _rb.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
         _isJumping = true;
     }

@@ -8,6 +8,8 @@ using System.Linq;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] private PlayerController _player;
+
     [SerializeField] private Spawner _spawner;
 
     [SerializeField] private GameObject _gameOverPanel;
@@ -25,6 +27,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private int _maxAmountOfFood;
     [SerializeField] private int _minTreshold;
+
+
 
     private LevelGoals _levelGoals;
 
@@ -63,6 +67,8 @@ public class GameManager : MonoBehaviour
     public GameState CurrentGameState { get; private set; }
 
     private bool _gameOver;
+
+
     public bool GameOver
     {
         get { return _gameOver; }
@@ -176,7 +182,7 @@ public class GameManager : MonoBehaviour
         _spawner.SpawnAwayFrom(amountToSpawn, new Vector3(0,0,0));
         _numberOfFoodOnTheField = amountToSpawn;
 
-        _respawnTreshold = Random.Range(_minTreshold, _maxAmountOfFood / 2);
+        _respawnTreshold = Random.Range(_minTreshold, _maxAmountOfFood / 3);
 
         ChangeState(GameState.Playing);
     }
@@ -187,7 +193,7 @@ public class GameManager : MonoBehaviour
         _spawner.SpawnAwayFrom(amountToSpawn, Vector3.zero);
         _numberOfFoodOnTheField += amountToSpawn;
 
-        _respawnTreshold = Random.Range(_minTreshold, _maxAmountOfFood / 2);
+        _respawnTreshold = Random.Range(_minTreshold, _maxAmountOfFood / 3);
     }
 
     public void PlayerAte()
@@ -313,6 +319,7 @@ public class GameManager : MonoBehaviour
 
             if (_remainingTime <= 0)
             {
+                SoundManager.Instance.PlayLoseSound();
                 GameOver = true;
             }
         }
