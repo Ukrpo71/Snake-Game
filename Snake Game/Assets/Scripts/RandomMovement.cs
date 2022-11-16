@@ -10,6 +10,11 @@ public class RandomMovement : MonoBehaviour
 
     private NavMeshAgent _agent;
 
+    private float _randomX;
+    private float _randomZ;
+
+    private Vector3 _randomVector;
+    private Vector3 _movementDirection;
 
     void Start()
     {
@@ -28,27 +33,24 @@ public class RandomMovement : MonoBehaviour
 
     private Vector3 FindNextTarget()
     {
-        var randomX = Random.Range(-_range, _range);
-        var randomZ = Random.Range(-_range, _range);
-        var randomVector = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
+        _randomX = Random.Range(-_range, _range);
+        _randomZ = Random.Range(-_range, _range);
+        _randomVector = new Vector3(transform.position.x + _randomX, transform.position.y, transform.position.z + _randomZ);
 
-        var movementDirection = randomVector - transform.position;
+        _movementDirection = _randomVector - transform.position;
 
-        if (Physics.Raycast(transform.position, movementDirection, out RaycastHit hitInfo, _range))
+        if (Physics.Raycast(transform.position, _movementDirection, out RaycastHit hitInfo, _range))
         {
             if (hitInfo.collider.CompareTag("Wall") || hitInfo.collider.CompareTag("Obstacle"))
             {
-                Debug.Log("hit a wall");
                 return FindNextTarget();
             }
             else
             {
-                Debug.Log("Hit something else");
-                return randomVector;
+                return _randomVector;
             }
 
         }
-        Debug.Log("Didn't hit anything");
-        return randomVector;
+        return _randomVector;
     }
 }

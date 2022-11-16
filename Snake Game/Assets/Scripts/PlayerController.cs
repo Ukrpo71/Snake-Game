@@ -41,6 +41,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private AudioClip _pickUpSound;
     [SerializeField] private AudioClip _jumpSound;
     [SerializeField] private AudioClip _loseSound;
+
+    //Look method variables
+    private Matrix4x4 matrix;
+    private Vector3 skewedInput;
+    private Vector3 relative;
+    private Quaternion rotation;
     public void PlayerLost()
     {
         _playerLost.Invoke();
@@ -158,14 +164,14 @@ public class PlayerController : MonoBehaviour
             // _isRotating ограничивает поворот на 45 градусов раз в промежуток времени _timeToTurn
             if (_isRotating == false)
             {
-                // "ѕоворачиваем" переменную _input на 45 градусов, чтобы изометрическое движение было интуиивно
+                // "ѕоворачиваем" переменную _input на 45 градусов, чтобы изометрическое движение было интуитивно
                 // пон€тно. Ќажима€ на "верх" игрок движетс€ "вверх".
-                var matrix = Matrix4x4.Rotate(Quaternion.Euler(0, 45, 0));
-                var skewedInput = matrix.MultiplyPoint3x4(_input);
+                matrix = Matrix4x4.Rotate(Quaternion.Euler(0, 45, 0));
+                skewedInput = matrix.MultiplyPoint3x4(_input);
 
                 // ѕововрачиваем игрока в сторону, которую мы указали
-                var relative = (transform.position + skewedInput) - transform.position;
-                Quaternion rotation = Quaternion.LookRotation(relative, Vector3.up);
+                relative = (transform.position + skewedInput) - transform.position;
+                rotation = Quaternion.LookRotation(relative, Vector3.up);
 
                 transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, 60);
 

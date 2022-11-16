@@ -41,6 +41,8 @@ public class GameManager : MonoBehaviour
     private int _timesJumpedOverSelf = 0;
 
     private int _multiplier = 1;
+
+    private string _sceneName;
     public int Multiplier
     {
         get { return _multiplier; }
@@ -84,6 +86,10 @@ public class GameManager : MonoBehaviour
     {
         _levelGoals = GetComponent<LevelGoals>();
         _remainingTime = _levelGoals.TimeToBeat;
+
+        _sceneName = SceneManager.GetActiveScene().name;
+        FireBaseScript.Instance.LevelStart(_sceneName);
+
         InitScorePanel();
         ChangeState(GameState.WaitingInput);
         UpdateScore();
@@ -124,6 +130,7 @@ public class GameManager : MonoBehaviour
                 break;
             case (GameState.GameWon):
                 InterstitialAd.Instance.NumberOfTimesPlayed++;
+                FireBaseScript.Instance.LevelEnd(_sceneName);
                 ShowGameWonPanel();
                 break;
             case (GameState.GameLost):

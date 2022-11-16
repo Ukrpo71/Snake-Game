@@ -1,12 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Firebase.Analytics;
+using Firebase.Extensions;
 
 public class FireBaseScript : MonoBehaviour
 {
     Firebase.FirebaseApp app;
+
+    public static FireBaseScript Instance;
+
     private void Awake()
     {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+            Destroy(gameObject);
+
         Firebase.FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task => {
             var dependencyStatus = task.Result;
             if (dependencyStatus == Firebase.DependencyStatus.Available)
@@ -24,5 +37,18 @@ public class FireBaseScript : MonoBehaviour
                 // Firebase Unity SDK is not safe to use here.
             }
         });
+    }
+
+    public void LevelStart(string levelName)
+    {
+        FirebaseAnalytics.LogEvent(FirebaseAnalytics.EventLevelStart,
+            new Parameter(FirebaseAnalytics.ParameterLevelName, levelName));
+
+    }
+
+    public void LevelEnd(string levelName)
+    {
+        FirebaseAnalytics.LogEvent(FirebaseAnalytics.EventLevelEnd,
+            new Parameter(FirebaseAnalytics.ParameterLevelName, levelName));
     }
 }
