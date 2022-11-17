@@ -22,7 +22,7 @@ public class DataPersist : MonoBehaviour
         else
             Destroy(gameObject);
 
-        Application.targetFrameRate = 60;
+        //Application.targetFrameRate = 60;
 
         DontDestroyOnLoad(this);
         _path = Application.persistentDataPath + Path.AltDirectorySeparatorChar + "save.json";

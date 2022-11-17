@@ -89,7 +89,6 @@ public class GameManager : MonoBehaviour
         _remainingTime = _levelGoals.TimeToBeat;
 
         _sceneName = SceneManager.GetActiveScene().name;
-        FireBaseScript.Instance.LevelStart(_sceneName);
 
         InitScorePanel();
         ChangeState(GameState.WaitingInput);
@@ -130,8 +129,6 @@ public class GameManager : MonoBehaviour
             case (GameState.Playing):
                 break;
             case (GameState.GameWon):
-                InterstitialAd.Instance.NumberOfTimesPlayed++;
-                FireBaseScript.Instance.LevelEnd(_sceneName);
                 ShowGameWonPanel();
                 break;
             case (GameState.GameLost):
