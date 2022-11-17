@@ -25484,7 +25484,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.4071422, y: -0.7742822, z: -11.341096}
+  m_LocalPosition: {x: -0.00000047683716, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -32971,7 +32971,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _levelScoreGoal: 150
-  _timeToBeat: 40
+  _timeToBeat: 30
   _jumpTreshold: 0
   _jumpOverObstaclesGoal: 0
   _jumpOverSelfGoal: 0

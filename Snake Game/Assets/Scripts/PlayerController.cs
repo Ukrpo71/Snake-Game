@@ -173,7 +173,7 @@ public class PlayerController : MonoBehaviour
                 relative = (transform.position + skewedInput) - transform.position;
                 rotation = Quaternion.LookRotation(relative, Vector3.up);
 
-                transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, 60);
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, 75);
 
                 _isRotating = true;
             }

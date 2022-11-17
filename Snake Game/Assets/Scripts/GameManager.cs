@@ -84,6 +84,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+
         _levelGoals = GetComponent<LevelGoals>();
         _remainingTime = _levelGoals.TimeToBeat;
 
