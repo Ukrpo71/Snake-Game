@@ -4241,6 +4241,46 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6124685734655696962, guid: 2815f00171ab5244bad75d4a20d0b58c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6124685734655696962, guid: 2815f00171ab5244bad75d4a20d0b58c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6124685734655696962, guid: 2815f00171ab5244bad75d4a20d0b58c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6124685734655696962, guid: 2815f00171ab5244bad75d4a20d0b58c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6124685734655696962, guid: 2815f00171ab5244bad75d4a20d0b58c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9187508625222575592, guid: 2815f00171ab5244bad75d4a20d0b58c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9187508625222575592, guid: 2815f00171ab5244bad75d4a20d0b58c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9187508625222575592, guid: 2815f00171ab5244bad75d4a20d0b58c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9187508625222575592, guid: 2815f00171ab5244bad75d4a20d0b58c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9187508625222575592, guid: 2815f00171ab5244bad75d4a20d0b58c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2815f00171ab5244bad75d4a20d0b58c, type: 3}
 --- !u!1 &615623636 stripped

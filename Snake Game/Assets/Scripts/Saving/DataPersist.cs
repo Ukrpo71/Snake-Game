@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using UnityEngine;
 using CloudOnce;
+using System.Runtime.InteropServices;
 
 public class DataPersist : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class DataPersist : MonoBehaviour
     public int NumberOfFinishedLevels => PlayerData.Levels.Count(t => t.IsFinished);
 
     private string _path;
+
+    private string _json;
 
     private void Awake()
     {
@@ -38,7 +41,12 @@ public class DataPersist : MonoBehaviour
         string json = JsonUtility.ToJson(PlayerData);
         File.WriteAllText(_path, json);
         Debug.Log("json: " + json);
-        Debug.Log("Encoded json: " + Base64Encode(json));
+
+#if UNITY_WEBGL
+        //SetAuthorization(IsAuthorized());
+        if (Yandex.Instance.IsAuth())
+            Yandex.Instance.Save(json);
+#endif
         //CloudVariables.savedGameData = Base64Encode(json);
         //Cloud.Storage.Save();
     }
@@ -58,23 +66,30 @@ public class DataPersist : MonoBehaviour
 
     public void Load()
     {
-        if (File.Exists(_path))
+        //SetAuthorization(IsAuthorized());
+        if (Yandex.Instance.IsAuth())
+        {
+            Yandex.Instance.Load();
+            if (_json != null)
+            {
+                Debug.Log("savedGameData: " + (_json));
+                PlayerData = JsonUtility.FromJson<PlayerData>(Base64Decode(_json));
+            }
+        }
+        if (_json == null && File.Exists(_path))
         {
             string json = File.ReadAllText(_path);
             PlayerData = JsonUtility.FromJson<PlayerData>(json);
         }
-        /*else if (CloudVariables.savedGameData != "")
-        {
-
-            string json = CloudVariables.savedGameData;
-            Debug.Log("savedGameData: " + Base64Decode(json));
-            PlayerData = JsonUtility.FromJson<PlayerData>(Base64Decode(json));
-        }
-        */
         else
         {
             PlayerData = FindObjectOfType<InitialDataPersist>().PlayerData;
         }
+    }
+
+    public void LoadYandexData(string data)
+    {
+        _json = data;
     }
 
     private void UpdateAnimals()
