@@ -65,6 +65,12 @@ public class PlayerController : MonoBehaviour
             SpawnJumpTrigger();
         }
 
+        if (Input.GetKey(KeyCode.X))
+            _isRunning = true;
+
+        if (Input.GetKeyUp(KeyCode.X))
+            _isRunning = false;
+
         if (_playerJumpedOverself)
             if (_lastTimeJumped + _timeoutToTriggerJumpOverself <= Time.time)
             {
@@ -235,7 +241,6 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Body") || collision.gameObject.CompareTag("Wall"))
         {
             _gameManager.GameOver = true;
-            InterstitialAd.Instance.NumberOfTimesPlayed++;
             SoundManager.Instance.PlayLoseSound();
             PlayerLost();
 

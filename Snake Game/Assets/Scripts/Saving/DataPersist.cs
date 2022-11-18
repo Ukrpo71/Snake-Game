@@ -39,8 +39,8 @@ public class DataPersist : MonoBehaviour
         File.WriteAllText(_path, json);
         Debug.Log("json: " + json);
         Debug.Log("Encoded json: " + Base64Encode(json));
-        CloudVariables.savedGameData = Base64Encode(json);
-        Cloud.Storage.Save();
+        //CloudVariables.savedGameData = Base64Encode(json);
+        //Cloud.Storage.Save();
     }
 
     public static string Base64Encode(string plainText)
@@ -63,14 +63,14 @@ public class DataPersist : MonoBehaviour
             string json = File.ReadAllText(_path);
             PlayerData = JsonUtility.FromJson<PlayerData>(json);
         }
-        else if (CloudVariables.savedGameData != "")
+        /*else if (CloudVariables.savedGameData != "")
         {
 
             string json = CloudVariables.savedGameData;
             Debug.Log("savedGameData: " + Base64Decode(json));
             PlayerData = JsonUtility.FromJson<PlayerData>(Base64Decode(json));
         }
-        
+        */
         else
         {
             PlayerData = FindObjectOfType<InitialDataPersist>().PlayerData;
