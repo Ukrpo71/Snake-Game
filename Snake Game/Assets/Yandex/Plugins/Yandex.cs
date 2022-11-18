@@ -15,7 +15,25 @@ public class Yandex : MonoBehaviour
     [DllImport("__Internal")]
     public static extern string GetMode();
 
+    [DllImport("__Internal")]
+    public static extern void ShowAdv();
+
     public static Yandex Instance;
+
+    private int _numberOfTimesPlayed = 0;
+
+    public int NumberOfTimesPlayed
+    {
+        get { return _numberOfTimesPlayed; }
+        set { 
+            _numberOfTimesPlayed = value;
+            if (value>=4)
+            {
+                ShowAdv();
+                _numberOfTimesPlayed = 0;
+            }
+                }
+    }
 
     private void Awake()
     {
@@ -38,9 +56,14 @@ public class Yandex : MonoBehaviour
         LoadExtern();
     }
 
+    public void ShowInterstitial()
+    {
+        ShowAdv();
+    }
     public bool IsAuth()
     {
         string mode = GetMode();
+        Debug.Log("mode: " + mode);
         if (mode == "lite")
             return false;
         else

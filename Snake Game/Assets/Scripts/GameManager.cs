@@ -129,9 +129,11 @@ public class GameManager : MonoBehaviour
             case (GameState.Playing):
                 break;
             case (GameState.GameWon):
+                Yandex.Instance.NumberOfTimesPlayed++;
                 ShowGameWonPanel();
                 break;
             case (GameState.GameLost):
+                Yandex.Instance.NumberOfTimesPlayed++;
                 ShowGameOverPanel();
                 break;
         }

@@ -2,7 +2,7 @@ mergeInto(LibraryManager.library, {
 
   SaveExtern: function (data) {
     var dataString = UTF8ToString(data);
-    var myObj = JSON.Parse(dataString);
+    var myObj = JSON.parse(dataString);
     player.setData(myObj);
   },
 
@@ -14,13 +14,25 @@ mergeInto(LibraryManager.library, {
   },
 
   GetMode: function () {
-    var returnStr =  initPlayer().then(_player => {
-        _player.getMode()});
+    var returnStr = player.getMode();
     var bufferSize = lengthBytesUTF8(returnStr) + 1;
     var buffer = _malloc(bufferSize);
     stringToUTF8(returnStr, buffer, bufferSize);
-    console.log(buffer);
     return buffer;
+  },
+
+  ShowAdv: function(){
+  	ysdk.adv.showFullscreenAdv({
+    callbacks: {
+        onClose: function(wasShown) {
+        	console.log("---------close-----------");
+          // some action after close
+        },
+        onError: function(error) {
+          // some action on error
+        }
+    }
+})
   },
 
 });

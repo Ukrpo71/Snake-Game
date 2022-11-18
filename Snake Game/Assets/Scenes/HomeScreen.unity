@@ -351,7 +351,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1907879469744838, guid: 487586a40ad248f46baafa596d6132ac, type: 3}
       propertyPath: m_TagString
-      value: Wall
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 1907879469744838, guid: 487586a40ad248f46baafa596d6132ac, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -359,19 +359,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4004459882257342, guid: 487586a40ad248f46baafa596d6132ac, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.38268393
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4004459882257342, guid: 487586a40ad248f46baafa596d6132ac, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4004459882257342, guid: 487586a40ad248f46baafa596d6132ac, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.9238794
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4004459882257342, guid: 487586a40ad248f46baafa596d6132ac, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4004459882257342, guid: 487586a40ad248f46baafa596d6132ac, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 135
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4139741094790214, guid: 487586a40ad248f46baafa596d6132ac, type: 3}
       propertyPath: m_RootOrder
@@ -8265,6 +8269,50 @@ MonoBehaviour:
   _UISound: {fileID: 8300000, guid: c5cb2ac29e89dbf43a9b644caaad45e6, type: 3}
   _startLevelSound: {fileID: 8300000, guid: 490bfbc72255342408984f60044487de, type: 3}
   _loseSound: {fileID: 8300000, guid: 1ed8fb76fc64e4e46847348138782234, type: 3}
+--- !u!1 &1225693665
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1225693667}
+  - component: {fileID: 1225693666}
+  m_Layer: 0
+  m_Name: Yandex
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1225693666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1225693665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddc1e1beaabdb544f98e8d84aa2b4994, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1225693667
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1225693665}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.5282492, y: 0.38532537, z: 0.036451094}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 17
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1251184292
 GameObject:
   m_ObjectHideFlags: 0
