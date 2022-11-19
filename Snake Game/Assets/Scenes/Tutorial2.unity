@@ -14164,7 +14164,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &456021884
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19016,6 +19016,7 @@ GameObject:
   m_Component:
   - component: {fileID: 669357593}
   - component: {fileID: 669357595}
+  - component: {fileID: 669357596}
   - component: {fileID: 669357594}
   m_Layer: 5
   m_Name: Text (TMP)
@@ -19141,6 +19142,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 669357592}
   m_CullTransparentMesh: 1
+--- !u!114 &669357596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 669357592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 212e4e593916cd048b2907d16b996e38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _ru: "WASD \u0438\u043B\u0438 \u0434\u0436\u043E\u0439\u0441\u0442\u0438\u043A
+    \u0434\u043B\u044F \u0434\u0432\u0438\u0436\u0435\u043D\u0438\u044F"
+  _en: Use WASD or the joystick to move
 --- !u!1001 &670568279
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21590,6 +21606,7 @@ GameObject:
   m_Component:
   - component: {fileID: 753607542}
   - component: {fileID: 753607544}
+  - component: {fileID: 753607545}
   - component: {fileID: 753607543}
   m_Layer: 5
   m_Name: Text (TMP)
@@ -21715,6 +21732,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 753607541}
   m_CullTransparentMesh: 1
+--- !u!114 &753607545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 753607541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 212e4e593916cd048b2907d16b996e38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _ru: "\u0423\u0434\u0430\u0447\u0438!"
+  _en: Good Luck!
 --- !u!1001 &754891360
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34893,7 +34924,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1256289562
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34906,7 +34937,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e853330cd2c6554ebe478802359481b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 0}
+  _player: {fileID: 401871456}
   _spawner: {fileID: 456021884}
   _gameOverPanel: {fileID: 1548826591}
   _gameWonPanel: {fileID: 1008660982}
@@ -41206,6 +41237,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1495850666}
   - component: {fileID: 1495850668}
+  - component: {fileID: 1495850669}
   - component: {fileID: 1495850667}
   m_Layer: 5
   m_Name: Text
@@ -41334,6 +41366,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1495850665}
   m_CullTransparentMesh: 1
+--- !u!114 &1495850669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1495850665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 212e4e593916cd048b2907d16b996e38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _ru: "\u041C\u043E\u043B\u043E\u0434\u0435\u0446! \u041F\u043E\u043C\u043D\u0438
+    \u0442\u044B \u0442\u0430\u043A \u0436\u0435 \u043C\u043E\u0436\u0435\u0448\u044C
+    \u043F\u0440\u044B\u0433\u0430\u0442\u044C \u0447\u0435\u0440\u0435\u0437 \u0441\u0435\u0431\u044F"
+  _en: Good Job !  Remember! You can also jump over youself.
 --- !u!1001 &1496160612
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -48705,6 +48753,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1719289803}
   - component: {fileID: 1719289805}
+  - component: {fileID: 1719289806}
   - component: {fileID: 1719289804}
   m_Layer: 5
   m_Name: Text (TMP)
@@ -48832,6 +48881,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1719289802}
   m_CullTransparentMesh: 1
+--- !u!114 &1719289806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1719289802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 212e4e593916cd048b2907d16b996e38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _ru: "\u0425 - \u0411\u0435\u0433 \\n \u0421 - \u041F\u0440\u044B\u0436\u043E\u043A"
+  _en: Press Down(X) to Run Press Up(C) to Jump
 --- !u!1 &1720719806 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7486114120955855211, guid: bb57c1e01794ba34cb07e4798e196cf8, type: 3}
@@ -49626,6 +49689,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1752315328}
   - component: {fileID: 1752315330}
+  - component: {fileID: 1752315331}
   - component: {fileID: 1752315329}
   m_Layer: 5
   m_Name: Text (TMP)
@@ -49751,6 +49815,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1752315327}
   m_CullTransparentMesh: 1
+--- !u!114 &1752315331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1752315327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 212e4e593916cd048b2907d16b996e38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _ru: "\u0422\u0440\u0435\u043D\u0438\u0440\u043E\u0432\u043A\u0430 \u043F\u0440\u044B\u0436\u043A\u0430!"
+  _en: Jump Practice!
 --- !u!1001 &1753433919
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -52925,6 +53003,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1901624782}
   - component: {fileID: 1901624784}
+  - component: {fileID: 1901624785}
   - component: {fileID: 1901624783}
   m_Layer: 5
   m_Name: Text
@@ -52995,6 +53074,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1901624781}
   m_CullTransparentMesh: 1
+--- !u!114 &1901624785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1901624781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 212e4e593916cd048b2907d16b996e38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _ru: "\u0421\u043B\u0435\u0434\u0443\u044E\u0449\u0438\u0439 \u0443\u0440\u043E\u0432\u0435\u043D\u044C"
+  _en: Next Level
 --- !u!1 &1902188683 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7486114120955855211, guid: bb57c1e01794ba34cb07e4798e196cf8, type: 3}

@@ -81,7 +81,10 @@ public class CharacterSelectionUISetup : MonoBehaviour
         SkinData skin = _skinsData.FirstOrDefault(t => t.Name == SkinName);
         if (skin.Cost == 0 || skin.IsUnlocked)
         {
-            _descriptionText.text = "To unlock this skin finish " + skin.UnlockingRequirement + " levels";
+            if(Yandex.Instance.Language == "ru")
+                _descriptionText.text = "Чтобы открыть этот скин, пройдите " + skin.UnlockingRequirement + " уровней";
+            else
+                _descriptionText.text = "To unlock this skin finish " + skin.UnlockingRequirement + " levels";
             _purchaseButton.gameObject.SetActive(false);
         }
         else if (skin.Cost > 0 && skin.IsUnlocked == false)
@@ -89,10 +92,56 @@ public class CharacterSelectionUISetup : MonoBehaviour
             _purchaseButton.gameObject.SetActive(true);
         }
         if (skin.IsUnlocked)
-            _descriptionText.text = "This skin is already unlocked";
+            if(Yandex.Instance.Language == "ru")
+                _descriptionText.text = "Вы уже открыли этот скин";
+            else
+                _descriptionText.text = "This skin is already unlocked";
 
         _playButton.interactable = skin.IsUnlocked ? true : false;
 
-        _characterNameText.text = skin.NameForPlaceholder;
+        if(Yandex.Instance.Language == "ru")
+            _characterNameText.text = ChangeNameToRu(skin.NameForPlaceholder);
+        else
+            _characterNameText.text = skin.NameForPlaceholder;
     }
+
+    public string ChangeNameToRu(string enName)
+    {
+        string result = "";
+        switch(enName)
+        {
+            case "Farm Boy":
+                result = "Мальчик-фермер";
+                break;
+            case "Farm Girl":
+                result = "Девочка-фермер";
+                break;
+            case "Farmer's Wife":
+                result = "Жена фермера";
+                break;
+            case "Farmer":
+                result = "Фермер";
+                break;
+            case "Jock":
+                result = "Спортсмен";
+                break;
+            case "Paramedic":
+                result = "Медик";
+                break;
+            case "Summer Girl":
+                result = "Солнечная девушка";
+                break;
+            case "Shopkeeper":
+                result = "Кассир";
+                break;
+            case "Hotdog":
+                result = "Хот-дог";
+                break;
+            case "Scarecrow":
+                result = "Пугало";
+                break;
+        }
+        return result;
+    }
+
 }

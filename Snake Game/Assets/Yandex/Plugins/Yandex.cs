@@ -18,21 +18,27 @@ public class Yandex : MonoBehaviour
     [DllImport("__Internal")]
     public static extern void ShowAdv();
 
+    [DllImport("__Internal")]
+    public static extern string GetLang();
+
     public static Yandex Instance;
 
     private int _numberOfTimesPlayed = 0;
 
+    public string Language;
+
     public int NumberOfTimesPlayed
     {
         get { return _numberOfTimesPlayed; }
-        set { 
+        set
+        {
             _numberOfTimesPlayed = value;
-            if (value>=4)
+            if (value >= 4)
             {
                 ShowAdv();
                 _numberOfTimesPlayed = 0;
             }
-                }
+        }
     }
 
     private void Awake()
@@ -44,6 +50,11 @@ public class Yandex : MonoBehaviour
         }
         else
             Destroy(gameObject);
+    }
+
+    private void Start()
+    {
+        Language = GetLang();
     }
 
     public void Save(string data)

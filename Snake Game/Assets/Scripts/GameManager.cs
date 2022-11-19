@@ -217,7 +217,10 @@ public class GameManager : MonoBehaviour
 
     private void UpdateBonusText()
     {
-        _bonusText.text = "Bonus Time: " + ((int)BonusTime).ToString();
+        if (Yandex.Instance.Language == "ru")
+            _bonusText.text = "Бонусное время: " + ((int)BonusTime).ToString();
+        else
+            _bonusText.text = "Bonus Time: " + ((int)BonusTime).ToString();
     }
 
     private void IncreaseBonusTime()
