@@ -10,7 +10,13 @@ public class Yandex : MonoBehaviour
     private static extern void SaveExtern(string data);
 
     [DllImport("__Internal")]
+    private static extern void BuySkin(string skinName);
+
+    [DllImport("__Internal")]
     public static extern void LoadExtern();
+
+    [DllImport("__Internal")]
+    private static extern void BuyAllSkins();
 
     [DllImport("__Internal")]
     public static extern string GetMode();
@@ -55,6 +61,16 @@ public class Yandex : MonoBehaviour
     private void Start()
     {
         Language = GetLang();
+    }
+
+    public void BuySkins(string skinName)
+    {
+        BuySkin(skinName);
+    }
+
+    public void BuyAll()
+    {
+        BuyAllSkins();
     }
 
     public void Save(string data)

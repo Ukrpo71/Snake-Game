@@ -165,21 +165,26 @@ public class GameManager : MonoBehaviour
         var dataPersist = FindObjectOfType<DataPersist>();
 
         var level = dataPersist.PlayerData.Levels.FirstOrDefault(l => l.Number == levelNumber);
-        level.IsFinished = true;
-
-        var nextLevel = dataPersist.PlayerData.Levels.FirstOrDefault(l => l.IsUnlocked == false);
-        if (nextLevel != null)
+        if (level.IsFinished == false)
         {
-            nextLevel.IsUnlocked = true;
+            level.IsFinished = true;
 
-            dataPersist.Save();
+            var nextLevel = dataPersist.PlayerData.Levels.FirstOrDefault(l => l.IsUnlocked == false);
+            if (nextLevel != null)
+            {
+                nextLevel.IsUnlocked = true;
 
-            SceneManager.LoadScene("LevelSelection");
+                dataPersist.Save();
+
+                SceneManager.LoadScene("LevelSelection");
+            }
+            else
+            {
+                SceneManager.LoadScene("HomeScreen");
+            }
         }
         else
-        {
-            SceneManager.LoadScene("HomeScreen");
-        }
+            SceneManager.LoadScene("LevelSelection");
     }
 
     private void Init()

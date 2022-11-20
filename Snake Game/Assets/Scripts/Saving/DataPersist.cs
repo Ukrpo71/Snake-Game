@@ -5,6 +5,7 @@ using System.Linq;
 using UnityEngine;
 using CloudOnce;
 using System.Runtime.InteropServices;
+using UnityEngine.SceneManagement;
 
 public class DataPersist : MonoBehaviour
 {
@@ -19,6 +20,14 @@ public class DataPersist : MonoBehaviour
     private string _json;
     private bool _loaded;
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            PlayerData = FindObjectOfType<InitialDataPersist>().PlayerData;
+            Save();
+        }
+    }
     private void Awake()
     {
         if (dataPersist == null)
@@ -148,4 +157,24 @@ public class DataPersist : MonoBehaviour
                 skin.IsUnlocked = true;
             }
     }
+
+    public void UnlockSkin(string skinName)
+    {
+        var unlockedSkin = PlayerData.Skins.First(s => s.Name.ToLower() == skinName.ToLower());
+        unlockedSkin.IsUnlocked = true;
+        Save();
+        SceneManager.LoadScene("CharacterSelection");
+    }
+
+    public void UnlockAllSkins()
+    {
+        List<SkinData> lockedSkins = dataPersist.PlayerData.Skins.FindAll(s => s.IsUnlocked == false);
+        foreach (var skin in lockedSkins)
+        {
+            skin.IsUnlocked = true;
+        }
+        Save();
+        SceneManager.LoadScene("CharacterSelection");
+    }
+
 }

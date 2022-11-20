@@ -37,11 +37,11 @@ public class LevelGoalsPanel : MonoBehaviour
         {
             _jumpTresholdGoal.SetActive(true);
             if (Yandex.Instance.Language == "ru")
-                _jumpTresholdText.SetText($"Jumps will count only after collecting " + $"<b>{_levelGoals.JumpTreshold.ToString()}</b>"
-                + $" animals");
-            else
                 _jumpTresholdText.SetText($"Прыжки будут засчитываться после " + $"<b>{_levelGoals.JumpTreshold.ToString()}</b>"
                 + $" собранных животных");
+            else
+                _jumpTresholdText.SetText($"Jumps will count only after collecting " + $"<b>{_levelGoals.JumpTreshold.ToString()}</b>"
+                + $" animals");
         }
     }
 

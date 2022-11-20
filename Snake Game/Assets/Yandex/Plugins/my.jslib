@@ -21,6 +21,29 @@ mergeInto(LibraryManager.library, {
     return buffer;
   },
 
+  BuySkin: function (skinName) {
+  	var name = UTF8ToString(skinName);
+    payments.purchase({ id: name }).then(purchase => {
+        // Покупка успешно совершена!
+        myGameInstance.SendMessage('DataPersist', 'UnlockSkin', skinName);
+    }).catch(err => {
+        // Покупка не удалась: в консоли разработчика не добавлен товар с таким id,
+        // пользователь не авторизовался, передумал и закрыл окно оплаты,
+        // истекло отведенное на покупку время, не хватило денег и т. д.
+    })
+  },
+
+  BuyAllSkins: function () {
+    payments.purchase({ id: 'unlockallskins' }).then(purchase => {
+        // Покупка успешно совершена!
+        myGameInstance.SendMessage('DataPersist', 'UnlockAllSkins');
+    }).catch(err => {
+        // Покупка не удалась: в консоли разработчика не добавлен товар с таким id,
+        // пользователь не авторизовался, передумал и закрыл окно оплаты,
+        // истекло отведенное на покупку время, не хватило денег и т. д.
+    })
+  },
+
   GetMode: function () {
     var returnStr = player.getMode();
     var bufferSize = lengthBytesUTF8(returnStr) + 1;
