@@ -25,7 +25,7 @@ mergeInto(LibraryManager.library, {
   	var name = UTF8ToString(skinName);
     payments.purchase({ id: name }).then(purchase => {
         // Покупка успешно совершена!
-        myGameInstance.SendMessage('DataPersist', 'UnlockSkin', skinName);
+        myGameInstance.SendMessage('DataPersist', 'UnlockSkin', name);
     }).catch(err => {
         // Покупка не удалась: в консоли разработчика не добавлен товар с таким id,
         // пользователь не авторизовался, передумал и закрыл окно оплаты,

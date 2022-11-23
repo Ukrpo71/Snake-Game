@@ -25,6 +25,7 @@ public class TutorialScreen : MonoBehaviour
     public void FinishGameTutorial()
     {
         _dataPersist.PlayerData.TutorialFinished = true;
+        _dataPersist.Save();
     }
 
     
