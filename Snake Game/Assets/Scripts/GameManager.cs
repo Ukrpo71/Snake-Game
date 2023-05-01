@@ -8,6 +8,8 @@ using System.Linq;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] private PlayerController _player;
+
     [SerializeField] private Spawner _spawner;
 
     [SerializeField] private GameObject _gameOverPanel;
@@ -26,6 +28,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int _maxAmountOfFood;
     [SerializeField] private int _minTreshold;
 
+
+
     private LevelGoals _levelGoals;
 
     private int _numberOfFoodOnTheField;
@@ -37,6 +41,8 @@ public class GameManager : MonoBehaviour
     private int _timesJumpedOverSelf = 0;
 
     private int _multiplier = 1;
+
+    private string _sceneName;
     public int Multiplier
     {
         get { return _multiplier; }
@@ -63,6 +69,8 @@ public class GameManager : MonoBehaviour
     public GameState CurrentGameState { get; private set; }
 
     private bool _gameOver;
+
+
     public bool GameOver
     {
         get { return _gameOver; }
@@ -76,8 +84,13 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+
         _levelGoals = GetComponent<LevelGoals>();
         _remainingTime = _levelGoals.TimeToBeat;
+
+        _sceneName = SceneManager.GetActiveScene().name;
+        FireBaseScript.Instance.LevelStart(_sceneName);
+
         InitScorePanel();
         ChangeState(GameState.WaitingInput);
         UpdateScore();
@@ -117,6 +130,8 @@ public class GameManager : MonoBehaviour
             case (GameState.Playing):
                 break;
             case (GameState.GameWon):
+                InterstitialAd.Instance.NumberOfTimesPlayed++;
+                FireBaseScript.Instance.LevelEnd(_sceneName);
                 ShowGameWonPanel();
                 break;
             case (GameState.GameLost):
@@ -170,11 +185,12 @@ public class GameManager : MonoBehaviour
 
     private void Init()
     {
+        UpdateGoalTexts();
         var amountToSpawn = Random.Range(_minTreshold, _maxAmountOfFood);
         _spawner.SpawnAwayFrom(amountToSpawn, new Vector3(0,0,0));
         _numberOfFoodOnTheField = amountToSpawn;
 
-        _respawnTreshold = Random.Range(_minTreshold, _maxAmountOfFood / 2);
+        _respawnTreshold = Random.Range(_minTreshold, _maxAmountOfFood / 3);
 
         ChangeState(GameState.Playing);
     }
@@ -185,7 +201,7 @@ public class GameManager : MonoBehaviour
         _spawner.SpawnAwayFrom(amountToSpawn, Vector3.zero);
         _numberOfFoodOnTheField += amountToSpawn;
 
-        _respawnTreshold = Random.Range(_minTreshold, _maxAmountOfFood / 2);
+        _respawnTreshold = Random.Range(_minTreshold, _maxAmountOfFood / 3);
     }
 
     public void PlayerAte()
@@ -239,6 +255,22 @@ public class GameManager : MonoBehaviour
 
     }
 
+    public void UpdateGoalTexts()
+    {
+        if (_levelGoals.JumpTreshold == 0)
+        {
+            if (_jumpsOverObstaclesPanel.activeInHierarchy)
+            {
+                _jumpsOverObstaclesPanel.GetComponent<CanvasGroup>().alpha = 1;
+
+            }
+            if (_jumpsOverYourselfPanel.activeInHierarchy)
+            {
+                _jumpsOverYourselfPanel.GetComponent<CanvasGroup>().alpha = 1;
+            }
+        }
+    }
+
     public void PlayerJumpedOver(bool jumpedOverObstacle)
     {
         if (_levelGoals.JumpTreshold <= _score)
@@ -250,9 +282,13 @@ public class GameManager : MonoBehaviour
 
             UpdateScore();
 
-            if (IsGoalReached())
-                ChangeState(GameState.GameWon);
         }
+    }
+
+    public void TryToFinishGame()
+    {
+        if (IsGoalReached())
+            ChangeState(GameState.GameWon);
     }
 
     private bool IsGoalReached()
@@ -260,6 +296,11 @@ public class GameManager : MonoBehaviour
         return (_score >= _levelGoals.Score && 
             _timesJumpedOverObstacles >= _levelGoals.JumpsOverObstacles 
             && _timesJumpedOverSelf >= _levelGoals.JumpsOverYourself);
+    }
+    public void FinishTutorial()
+    {
+        
+        //PlayerPrefs.SetInt("TutorialFinished", 1);
     }
 
     private void UpdateBonusTime()
@@ -286,6 +327,7 @@ public class GameManager : MonoBehaviour
 
             if (_remainingTime <= 0)
             {
+                SoundManager.Instance.PlayLoseSound();
                 GameOver = true;
             }
         }

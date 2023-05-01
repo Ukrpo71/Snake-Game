@@ -10,6 +10,7 @@ public class CharacterSelectionUISetup : MonoBehaviour
     [SerializeField] private TMP_Text _descriptionText;
     [SerializeField] private TMP_Text _characterNameText;
     [SerializeField] private Button _playButton;
+    [SerializeField] private Button _purchaseButton;
 
     [SerializeField] List<Skin> _skins;
 
@@ -26,14 +27,27 @@ public class CharacterSelectionUISetup : MonoBehaviour
         SelectActiveSkin();
     }
 
+    public void UpdateSkinsData()
+    {
+        _dataPersist = null;
+        _dataPersist = FindObjectOfType<DataPersist>();
+        _skinsData.Clear();
+        foreach (var skin in _dataPersist.PlayerData.Skins)
+        {
+            _skinsData.Add(skin);
+        }
+    }
+
     public void SetupSkinBackground()
     {
         foreach(var image in _grayedOutImages)
         {
-            SkinData associatedSkin = _skinsData.FirstOrDefault(i => i.Name == image.gameObject.name);
+            SkinData associatedSkin = _dataPersist.PlayerData.Skins.FirstOrDefault(i => i.Name == image.gameObject.name);
+            Debug.Log(associatedSkin.Name + " " + associatedSkin.IsUnlocked);
             image.color = associatedSkin.IsUnlocked ? Color.white : Color.gray;
         }
     }
+
 
     private void LoadData()
     {
@@ -65,11 +79,15 @@ public class CharacterSelectionUISetup : MonoBehaviour
         if (_skinsData == null)
             LoadData();
         SkinData skin = _skinsData.FirstOrDefault(t => t.Name == SkinName);
-        if (skin.Cost == 0)
+        if (skin.Cost == 0 || skin.IsUnlocked)
+        {
             _descriptionText.text = "To unlock this skin finish " + skin.UnlockingRequirement + " levels";
-        else if (skin.Cost > 0)
-            _descriptionText.text = "$" + skin.Cost;
-
+            _purchaseButton.gameObject.SetActive(false);
+        }
+        else if (skin.Cost > 0 && skin.IsUnlocked == false)
+        {
+            _purchaseButton.gameObject.SetActive(true);
+        }
         if (skin.IsUnlocked)
             _descriptionText.text = "This skin is already unlocked";
 

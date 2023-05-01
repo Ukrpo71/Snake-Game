@@ -28,6 +28,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8024051728754942477}
   m_RootOrder: 0
@@ -69,6 +70,7 @@ GameObject:
   - component: {fileID: 1297087509142116411}
   - component: {fileID: 4700816128636150978}
   - component: {fileID: 5666945309618443856}
+  - component: {fileID: 278747034301471768}
   m_Layer: 0
   m_Name: ForestTreeTrunk
   m_TagString: Wall
@@ -86,6 +88,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 8, y: 0.25, z: -3}
   m_LocalScale: {x: 5, y: 5, z: 5}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3843535042671171063}
   m_Father: {fileID: 0}
@@ -110,6 +113,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -149,8 +153,21 @@ MeshCollider:
   m_GameObject: {fileID: 6413250459269255198}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -6532144176057085413, guid: 58070766bab0b87428a33bd9fb73cffc, type: 3}
+--- !u!65 &278747034301471768
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6413250459269255198}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.4836752, y: 0.076426126, z: 0.074872784}
+  m_Center: {x: -0.000000047683717, y: 0.038213074, z: 0.002846095}

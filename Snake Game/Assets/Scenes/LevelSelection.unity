@@ -3993,6 +3993,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b033f74e4fbbda6468ae6c7e473605ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _UISound: {fileID: 0}
 --- !u!224 &1068101591 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2122859716003829301, guid: 3f014b7cc1ef6ce48b765f7e14863d3c, type: 3}

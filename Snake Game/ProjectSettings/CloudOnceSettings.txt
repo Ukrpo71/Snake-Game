@@ -1,0 +1,20 @@
+{
+	"AchievementIDs":[],
+	"LeaderboardIDs":[],
+	"CloudVariables":[
+		{
+			"Key":"savedGameData",
+			"Type":"5",
+			"DefaultValue":"",
+			"PersistenceType":"0",
+			"AllowNegative":false
+		}
+	],
+	"AppleSupported":false,
+	"GoogleSupported":true,
+	"GoogleAppID":"965036042384",
+	"GoogleSetupRun":true,
+	"DebugModeEnabled":true,
+	"Version":"2.7.5",
+	"SettingsLocation":"0"
+}

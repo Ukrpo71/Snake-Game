@@ -5,7 +5,7 @@ using UnityEngine;
 public class InvisibleTrigger : MonoBehaviour
 {
     [SerializeField]
-    private float _invisibleTimer = 1;
+    private float _invisibleTimer = 2;
 
     private float _timer = 0;
     void Start()

@@ -61,11 +61,15 @@ public class Jumper : MonoBehaviour
             _isJumping = false;
             _isInTheAir = false;
             _rb.velocity = new Vector3(0,0,0);
+            if (!gameObject.CompareTag("Body"))
+                GetComponent<PlayerController>().LandedJump();
         }
     }
 
     private void Jump()
     {
+        if (gameObject.CompareTag("Body"))
+            transform.GetComponentInChildren<BoxCollider>().isTrigger = false;
         _rb.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
         _isJumping = true;
     }
