@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private GameObject _gameOverPanel;
     [SerializeField] private GameObject _gameWonPanel;
+    [SerializeField] private GameObject _showRewardedAdPanel;
 
     [SerializeField] private GameObject _jumpsOverObstaclesPanel;
     [SerializeField] private GameObject _jumpsOverYourselfPanel;
@@ -142,6 +143,12 @@ public class GameManager : MonoBehaviour
     public void ShowGameWonPanel()
     {
         _gameWonPanel.SetActive(true);
+    }
+
+    public void ShowRewardedAdPanel()
+    {
+        Time.timeScale = 0;
+        _showRewardedAdPanel.SetActive(true);
     }
 
     public void LoadLevel()

@@ -52,7 +52,6 @@ public class PlayerController : MonoBehaviour
         _playerLost.Invoke();
     }
 
-
     void Start()
     {
         _moveSpeed = _walkSpeed;
@@ -60,7 +59,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.C))
+        if (_gameManager.CurrentGameState == GameState.Playing && Input.GetKeyDown(KeyCode.Space))
         {
             SpawnJumpTrigger();
         }
@@ -237,14 +236,11 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        //if (collision.collider.transform.parent != null && collision.collider.transform.parent.CompareTag("Body"))
         if (collision.gameObject.CompareTag("Body") || collision.gameObject.CompareTag("Wall"))
         {
             _gameManager.GameOver = true;
             SoundManager.Instance.PlayLoseSound();
             PlayerLost();
-
-            
         }
     }
 

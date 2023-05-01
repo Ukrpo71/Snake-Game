@@ -117,14 +117,14 @@ public class DataPersist : MonoBehaviour
         Debug.Log("save file from load yandex data" + data);
         _json = data;
 
-        if(_json != null)
+        if(_json == "{}" || _json == null)
         {
-            Debug.Log("savedGameData: " + (_json));
-            PlayerData = JsonUtility.FromJson<PlayerData>(_json);
+            LoadFromFile();
         }
         else
         {
-            LoadFromFile();
+            Debug.Log("savedGameData: " + (_json));
+            PlayerData = JsonUtility.FromJson<PlayerData>(_json);
         }
     }
     

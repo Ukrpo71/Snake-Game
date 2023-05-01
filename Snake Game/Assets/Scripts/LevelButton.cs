@@ -29,8 +29,11 @@ public class LevelButton : MonoBehaviour
         _levelIndex = int.Parse(gameObject.name);
 
         GetComponentInChildren<TextMeshProUGUI>().text = _levelIndex.ToString();
-        GetComponent<Button>().onClick.AddListener(LoadLevel);
-        GetComponent<Button>().onClick.AddListener(SoundManager.Instance.PlayUIAudio);
+        if (_level.IsUnlocked)
+        {
+            GetComponent<Button>().onClick.AddListener(LoadLevel);
+            GetComponent<Button>().onClick.AddListener(SoundManager.Instance.PlayUIAudio);
+        }
     }
 
     private void LoadLevel()

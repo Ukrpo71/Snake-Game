@@ -7686,6 +7686,7 @@ GameObject:
   - component: {fileID: 286430330}
   - component: {fileID: 286430333}
   - component: {fileID: 286430334}
+  - component: {fileID: 286430335}
   - component: {fileID: 286430331}
   m_Layer: 5
   m_Name: Waiting Input
@@ -7924,6 +7925,21 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &286430335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 286430328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 212e4e593916cd048b2907d16b996e38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _ru: "\u041D\u0430\u0436\u043C\u0438\u0442\u0435, \u0447\u0442\u043E\u0431\u044B
+    \u043D\u0430\u0447\u0430\u0442\u044C"
+  _en: Press To Start
 --- !u!1001 &286481613
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25755,7 +25771,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.00000047683716, y: 0, z: -10}
+  m_LocalPosition: {x: 1.4071422, y: -0.7742822, z: -11.341096}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -33220,6 +33236,7 @@ MonoBehaviour:
   _spawner: {fileID: 456021884}
   _gameOverPanel: {fileID: 1548826591}
   _gameWonPanel: {fileID: 1008660982}
+  _showRewardedAdPanel: {fileID: 0}
   _jumpsOverObstaclesPanel: {fileID: 65514905}
   _jumpsOverYourselfPanel: {fileID: 30989919}
   _scoreText: {fileID: 771220198}
@@ -33256,11 +33273,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d971da22a4fc7a42908f1f843c0189e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _levelScoreGoal: 100
+  _levelScoreGoal: 40
   _timeToBeat: 100
-  _jumpTreshold: 70
-  _jumpOverObstaclesGoal: 6
-  _jumpOverSelfGoal: 4
+  _jumpTreshold: 0
+  _jumpOverObstaclesGoal: 2
+  _jumpOverSelfGoal: 0
 --- !u!4 &1256398397 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 408904, guid: 4cc487e002327cb43995ca1871bd142e, type: 3}

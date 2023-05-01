@@ -7378,7 +7378,7 @@ MonoBehaviour:
       IsUnlocked: 1
       IsFinished: 0
     - Number: 3
-      IsUnlocked: 1
+      IsUnlocked: 0
       IsFinished: 0
     - Number: 4
       IsUnlocked: 0
@@ -7429,6 +7429,36 @@ MonoBehaviour:
       IsUnlocked: 0
       IsFinished: 0
     - Number: 20
+      IsUnlocked: 0
+      IsFinished: 0
+    - Number: 21
+      IsUnlocked: 0
+      IsFinished: 0
+    - Number: 22
+      IsUnlocked: 0
+      IsFinished: 0
+    - Number: 23
+      IsUnlocked: 0
+      IsFinished: 0
+    - Number: 24
+      IsUnlocked: 0
+      IsFinished: 0
+    - Number: 25
+      IsUnlocked: 0
+      IsFinished: 0
+    - Number: 26
+      IsUnlocked: 0
+      IsFinished: 0
+    - Number: 27
+      IsUnlocked: 0
+      IsFinished: 0
+    - Number: 28
+      IsUnlocked: 0
+      IsFinished: 0
+    - Number: 29
+      IsUnlocked: 0
+      IsFinished: 0
+    - Number: 30
       IsUnlocked: 0
       IsFinished: 0
     TutorialFinished: 0

@@ -39,7 +39,7 @@ public class Yandex : MonoBehaviour
         set
         {
             _numberOfTimesPlayed = value;
-            if (value >= 4)
+            if (value >= 6)
             {
                 ShowAdv();
                 _numberOfTimesPlayed = 0;
@@ -89,11 +89,17 @@ public class Yandex : MonoBehaviour
     }
     public bool IsAuth()
     {
-        string mode = GetMode();
-        Debug.Log("mode: " + mode);
-        if (mode == "lite")
-            return false;
+        if (GetMode() != null)
+        {
+            string mode = GetMode();
+            Debug.Log("mode: " + mode);
+            if (mode == "lite")
+                return false;
+            else
+                return true;
+
+        }
         else
-            return true;
+            return false;
     }
 }
